@@ -20,12 +20,14 @@ const directions = {
 };
 
 const rooms = [
-  { id: "checker", number: "Room 01", name: "Blue Toile", description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.", images: { a: "assets/checker-a.jpg", b: "assets/checker-b.jpg", c: "assets/checker-c.jpg" }, originals: ["7711","7712","7713","7714","7715","7716","7730","7731"] },
+  { id: "checker", number: "Room 01", name: "Blue Toile", description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.", images: { a: "assets/checker-a.jpg", b: "assets/checker-b.jpg", c: "assets/checker-c.jpg" }, originals: ["7712","7713","7714","7715","7716"] },
   { id: "olive", number: "Room 02", name: "Olive Window", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" }, originals: ["7719","7720","7721","7722","7723","7724"] },
   { id: "teal", number: "Room 03", name: "Deep Teal", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.", images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" }, originals: ["7717","7718"] },
   { id: "terra", number: "Room 04", name: "Terracotta Botanical", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" }, originals: ["7725","7726","7727","7728","7729","7732","7733","7734","7735","7736","7737","7738"] },
   { id: "peacock", number: "Room 05", name: "Peacock Blue", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" }, originals: ["7739","7740"] },
-  { id: "ivory", number: "Room 06", name: "Ivory & Green", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] }
+  { id: "ivory", number: "Room 06", name: "Ivory & Green", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] },
+  { id: "teal-built-in", number: "Room 07", name: "Teal Built-In", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
+  { id: "pale-blue-toile", number: "Room 08", name: "Pale Blue Toile", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true }
 ];
 
 let activeRoom = rooms[0].id;
@@ -55,6 +57,10 @@ function isComplete(id) {
   return saved.shortlist.length > 0 || saved.note.trim().length > 0;
 }
 
+function roomImage(room, direction = "a") {
+  return room.sourceOnly ? `assets/originals/IMG_${room.originals[0]}.jpg` : room.images[direction];
+}
+
 function save(message = "Saved locally") {
   localStorage.setItem("erato-direction-state", JSON.stringify(state));
   $("save-status").textContent = message;
@@ -81,7 +87,7 @@ function renderNav() {
   $("room-nav").innerHTML = rooms.map((room) => {
     const saved = roomState(room.id);
     return `<button class="room-button ${room.id === activeRoom ? "active" : ""}" data-room="${room.id}">
-      <img class="room-thumb" src="${room.images[saved.direction]}" alt="">
+      <img class="room-thumb" src="${roomImage(room, saved.direction)}" alt="">
       <span class="room-button-copy"><strong>${room.name}</strong><small>${room.number}${saved.shortlist.length ? ` · ${saved.shortlist.length} saved` : ""}</small></span>
       <span class="room-status ${isComplete(room.id) ? "complete" : ""}" aria-label="${isComplete(room.id) ? "Room shaped" : "No decision yet"}">✓</span>
     </button>`;
@@ -136,6 +142,10 @@ function toggleShortlist(id = activeDirection) {
 }
 
 function renderCompare(room) {
+  if (room.sourceOnly) {
+    $("compare-stage").innerHTML = "";
+    return;
+  }
   const saved = roomState(room.id);
   $("compare-stage").innerHTML = Object.entries(directions).map(([id, option]) => `
     <article class="compare-card">
@@ -155,7 +165,7 @@ function renderCompare(room) {
 
 function renderCollection() {
   $("collection-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `<button class="collection-tab ${id === collectionDirection ? "active" : ""}" data-collection-direction="${id}">${option.letter} · ${option.name}</button>`).join("");
-  $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${room.images[collectionDirection]}" alt="${room.name} — ${directions[collectionDirection].name}"><span>${room.number} · ${room.name}</span></button>`).join("");
+  $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${roomImage(room, collectionDirection)}" alt="${room.name}${room.sourceOnly ? " — original condition" : ` — ${directions[collectionDirection].name}`}"><span>${room.number} · ${room.name}${room.sourceOnly ? " · Source only" : ""}</span></button>`).join("");
   $("collection-summary").textContent = directions[collectionDirection].collection;
   $("collection-tabs").querySelectorAll("[data-collection-direction]").forEach((button) => button.addEventListener("click", () => {
     collectionDirection = button.dataset.collectionDirection;
@@ -170,6 +180,7 @@ function renderCollection() {
 
 function archiveItems(room) {
   if (archiveView === "renderings") {
+    if (room.sourceOnly) return [];
     return Object.entries(directions).map(([id, direction]) => ({
       src: room.images[id],
       label: direction.name,
@@ -184,10 +195,13 @@ function archiveItems(room) {
 }
 
 function renderArchive(room) {
+  if (room.sourceOnly) archiveView = "originals";
   lightboxItems = archiveItems(room);
   $("original-count").textContent = room.originals.length;
+  $("rendering-count").textContent = room.sourceOnly ? "0" : "3";
+  $("rendering-tab").disabled = room.sourceOnly;
   $("archive-description").textContent = archiveView === "originals"
-    ? `${room.originals.length} source photographs document the room, its millwork, and adjoining spaces.`
+    ? `${room.originals.length} source photograph${room.originals.length === 1 ? "" : "s"} document${room.originals.length === 1 ? "s" : ""} the room${room.sourceOnly ? " before its first rendering study" : ", its millwork, and adjoining spaces"}.`
     : "All three art languages shown together for direct comparison.";
   $("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.classList.toggle("active", button.dataset.archiveView === archiveView));
   $("archive-grid").innerHTML = lightboxItems.map((item, index) => `
@@ -243,12 +257,12 @@ function closeCollection() {
 }
 
 function applyCollection() {
-  rooms.forEach((room) => { roomState(room.id).direction = collectionDirection; });
+  rooms.filter((room) => !room.sourceOnly).forEach((room) => { roomState(room.id).direction = collectionDirection; });
   activeDirection = collectionDirection;
   save();
   closeCollection();
   render();
-  toast(`${directions[collectionDirection].name} set across all six rooms`);
+  toast(`${directions[collectionDirection].name} set across the six rendered rooms`);
 }
 
 function render() {
@@ -260,21 +274,24 @@ function render() {
   renderTabs();
   renderCompare(room);
   renderArchive(room);
+  $("room-total").textContent = rooms.length;
+  $("source-room-notice").hidden = !room.sourceOnly;
+  $("main-panel").classList.toggle("source-room", Boolean(room.sourceOnly));
   $("room-position").textContent = `Bedroom ${String(roomIndex + 1).padStart(2, "0")} / ${String(rooms.length).padStart(2, "0")}`;
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
   $("room-description").textContent = room.description;
-  $("hero-image").src = room.images[activeDirection];
-  $("hero-image").alt = `${room.name} bedroom — ${choice.name} art direction`;
-  $("image-option").textContent = choice.name;
-  $("image-caption").textContent = choice.short;
+  $("hero-image").src = roomImage(room, activeDirection);
+  $("hero-image").alt = room.sourceOnly ? `${room.name} — original condition` : `${room.name} bedroom — ${choice.name} art direction`;
+  $("image-option").textContent = room.sourceOnly ? "Original condition" : choice.name;
+  $("image-caption").textContent = room.sourceOnly ? "Awaiting first art-direction renderings" : choice.short;
   $("direction-name").textContent = choice.name;
   $("direction-description").textContent = choice.description;
   $("palette").innerHTML = choice.palette.map((color) => `<span class="swatch" style="background:${color}" title="${color}"></span>`).join("");
   $("room-note").value = saved.note;
   $("frame-choice").value = saved.frame;
   $("scale-choice").value = saved.scale;
-  const selected = saved.shortlist.includes(activeDirection);
+  const selected = !room.sourceOnly && saved.shortlist.includes(activeDirection);
   $("stage-shortlist").classList.toggle("active", selected);
   $("stage-shortlist").setAttribute("aria-pressed", selected);
   $("stage-shortlist").textContent = selected ? "♥ Saved to shortlist" : "♡ Save this direction";
@@ -290,6 +307,7 @@ function render() {
 function summaryText() {
   return rooms.map((room) => {
     const saved = roomState(room.id);
+    if (room.sourceOnly) return `${room.number} — ${room.name}\nStatus: Source room added; art-direction renderings pending\nOriginal photographs: ${room.originals.length}`;
     const picks = saved.shortlist.length ? saved.shortlist.map((id) => directions[id].name).join(", ") : "No option shortlisted";
     return `${room.number} — ${room.name}\nWorking view: ${directions[saved.direction].name}\nShortlist: ${picks}\nFrame: ${saved.frame}\nArt presence: ${saved.scale}\nNotes: ${saved.note || "—"}`;
   }).join("\n\n");
@@ -302,6 +320,7 @@ function escapeHTML(value) {
 function openDrawer() {
   $("decision-summary").innerHTML = rooms.map((room) => {
     const saved = roomState(room.id);
+    if (room.sourceOnly) return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>Source room</small></div><p><strong>Status:</strong> Art-direction renderings pending</p><p>${room.originals.length} original photograph${room.originals.length === 1 ? "" : "s"} added.</p></article>`;
     const picks = saved.shortlist.length ? saved.shortlist.map((id) => directions[id].name).join(", ") : "No option shortlisted";
     return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>${directions[saved.direction].name}</small></div><p><strong>Shortlist:</strong> ${picks}</p><p><strong>Frame:</strong> ${saved.frame} · <strong>Presence:</strong> ${saved.scale}</p><p class="${saved.note ? "" : "empty"}">${saved.note ? escapeHTML(saved.note) : "No refinement note yet."}</p></article>`;
   }).join("");

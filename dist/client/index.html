@@ -17,7 +17,7 @@
       <span class="brand-copy"><small>1722 Erato Hotel Villas</small><strong>Art Direction Studio</strong></span>
     </a>
     <div class="project-progress" aria-label="Project progress">
-      <span class="progress-label"><b id="rooms-shaped">0</b> of 6 rooms shaped</span>
+      <span class="progress-label"><b id="rooms-shaped">0</b> of <span id="room-total">8</span> rooms shaped</span>
       <span class="progress-track"><i id="progress-fill"></i></span>
     </div>
     <div class="top-actions">
@@ -30,16 +30,16 @@
     <aside class="room-sidebar">
       <div class="sidebar-heading">
         <p class="eyebrow">The bedroom collection</p>
-        <h2>Six rooms,<br>one point of view.</h2>
+        <h2>Eight rooms,<br>one point of view.</h2>
       </div>
       <nav id="room-nav" class="room-nav" aria-label="Bedrooms"></nav>
       <div class="sidebar-brief">
         <span class="brief-number">01</span>
-        <div><strong>The brief</strong><p>Create a family resemblance without repeating the same room six times.</p></div>
+        <div><strong>The brief</strong><p>Create a family resemblance without repeating the same solution eight times.</p></div>
       </div>
     </aside>
 
-    <main class="main-panel">
+    <main id="main-panel" class="main-panel">
       <div class="room-toolbar">
         <p id="room-position" class="room-position"></p>
         <div class="room-arrows">
@@ -51,6 +51,11 @@
       <section class="room-intro">
         <div><p id="room-kicker" class="eyebrow"></p><h1 id="room-title"></h1></div>
         <p id="room-description" class="room-description"></p>
+      </section>
+
+      <section id="source-room-notice" class="source-room-notice" hidden>
+        <span>New source room</span>
+        <p>This room has been added from the original photo set. Its three art-direction renderings are the next design step.</p>
       </section>
 
       <section class="direction-section" aria-labelledby="direction-heading">
@@ -104,7 +109,7 @@
           </div>
           <div class="archive-tabs" id="archive-tabs" aria-label="Room archive view">
             <button class="active" data-archive-view="originals" type="button">Original photographs <b id="original-count">0</b></button>
-            <button data-archive-view="renderings" type="button">All renderings <b>3</b></button>
+            <button id="rendering-tab" data-archive-view="renderings" type="button">All renderings <b id="rendering-count">3</b></button>
           </div>
         </div>
         <div id="archive-grid" class="archive-grid"></div>
@@ -120,7 +125,7 @@
   <div class="modal-backdrop" id="collection-backdrop" hidden></div>
   <section class="collection-modal" id="collection-modal" aria-hidden="true" aria-label="Whole collection view">
     <header class="modal-header">
-      <div><p class="eyebrow">Whole-house view</p><h2>Read the collection as one story.</h2><p>Switch a direction to see how its visual language travels across all six rooms.</p></div>
+      <div><p class="eyebrow">Whole-house view</p><h2>Read the collection as one story.</h2><p>Switch a direction to see how its visual language travels across the six rendered rooms and two new source rooms.</p></div>
       <button id="close-collection" class="modal-close" type="button" aria-label="Close collection view">×</button>
     </header>
     <div id="collection-tabs" class="collection-tabs"></div>
@@ -131,7 +136,7 @@
   <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
   <aside class="decision-drawer" id="decision-drawer" aria-hidden="true" aria-label="Art program decisions">
     <div class="drawer-header">
-      <div><p class="eyebrow">Working art program</p><h2>Decision book</h2><p>A live snapshot of the six-room collection.</p></div>
+      <div><p class="eyebrow">Working art program</p><h2>Decision book</h2><p>A live snapshot of the complete eight-room collection.</p></div>
       <button id="close-drawer" class="modal-close" type="button" aria-label="Close decision book">×</button>
     </div>
     <div id="decision-summary" class="decision-summary"></div>
