@@ -31,6 +31,17 @@ const rooms = [
       b: { name: "Water Light", short: "Cast-glass light installation", description: "An organic constellation of hand-cast glass lenses and subtle concealed light scatters watery reflections across the room. Individual pieces suggest current and salvaged material without forming a picture.", palette: ["#e5dfd0", "#8a9b91", "#56666a", "#b69054"] },
       c: { name: "Current Weave", short: "Fiber-and-cane soft sculpture", description: "Indigo cord, palmetto fiber, river cane, and oxidized copper move diagonally across the wall and corner as a monumental open weave—part net, part current, and fully spatial.", palette: ["#152b40", "#a68958", "#c9b895", "#584b3d"] }
     },
+    allRenderings: [
+      { src: "assets/checker-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
+      { src: "assets/checker-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Graphic print" },
+      { src: "assets/checker-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
+      { src: "assets/checker-local-a.png", label: "River Darkroom", meta: "Round 02 · Hand-toned photography" },
+      { src: "assets/checker-local-b.png", label: "Delta Patchwork", meta: "Round 02 · Stitched fiber art" },
+      { src: "assets/checker-local-c.png", label: "Sediment Relief", meta: "Round 02 · Plaster and brass" },
+      { src: "assets/checker-spatial-a.png", label: "River Skin", meta: "Round 03 · Wall-integrated fresco" },
+      { src: "assets/checker-spatial-b.png", label: "Water Light", meta: "Round 03 · Cast-glass installation" },
+      { src: "assets/checker-spatial-c.png", label: "Current Weave", meta: "Round 03 · Fiber-and-cane sculpture" }
+    ],
     originals: ["7712","7713","7714","7715","7716"]
   },
   { id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" }, originals: ["7719","7720","7721","7722","7723","7724"] },
@@ -216,19 +227,21 @@ function originalItems(room) {
   }));
 }
 
-function archiveItems(room) {
-  if (archiveView === "renderings") {
-    if (room.sourceOnly) return [];
-    return Object.keys(directions).map((id) => {
-      const direction = optionFor(room, id);
-      return {
+function renderingItems(room) {
+  if (room.sourceOnly) return [];
+  if (room.allRenderings) return room.allRenderings;
+  return Object.keys(directions).map((id) => {
+    const direction = optionFor(room, id);
+    return {
       src: room.images[id],
       label: direction.name,
       meta: `${direction.letter} · Concept rendering`
-      };
-    });
-  }
-  return originalItems(room);
+    };
+  });
+}
+
+function archiveItems(room) {
+  return archiveView === "renderings" ? renderingItems(room) : originalItems(room);
 }
 
 function renderSourceStrip(room) {
@@ -246,13 +259,14 @@ function renderSourceStrip(room) {
 
 function renderArchive(room) {
   if (room.sourceOnly) archiveView = "originals";
+  const renderings = renderingItems(room);
   lightboxItems = archiveItems(room);
   $("original-count").textContent = room.originals.length;
-  $("rendering-count").textContent = room.sourceOnly ? "0" : "3";
+  $("rendering-count").textContent = renderings.length;
   $("rendering-tab").disabled = room.sourceOnly;
   $("archive-description").textContent = archiveView === "originals"
     ? `${room.originals.length} source photograph${room.originals.length === 1 ? "" : "s"} document${room.originals.length === 1 ? "s" : ""} the room${room.sourceOnly ? " before its first rendering study" : ", its millwork, and adjoining spaces"}.`
-    : "All three art languages shown together for direct comparison.";
+    : `${renderings.length} rendering${renderings.length === 1 ? "" : "s"} across every completed concept round, labeled by medium and sequence.`;
   $("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.classList.toggle("active", button.dataset.archiveView === archiveView));
   $("archive-grid").innerHTML = lightboxItems.map((item, index) => `
     <button class="archive-card" data-archive-index="${index}" type="button">
