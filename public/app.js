@@ -1,64 +1,39 @@
 const directions = {
   a: {
-    name: "Poetic Louisiana",
-    short: "Painterly & lyrical",
+    letter: "A", name: "Poetic Louisiana", short: "Painterly & lyrical",
     description: "Atmospheric wetlands and expressive botanicals give the room a quiet sense of place without leaning into literal tourism imagery.",
     palette: ["#173f45", "#d9d2c4", "#6b8490", "#b69a66"],
+    collection: "The most transportive direction: soft, atmospheric, and unmistakably connected to the Louisiana landscape."
   },
   b: {
-    name: "Graphic Modernist",
-    short: "Bold & architectural",
+    letter: "B", name: "Graphic Modernist", short: "Bold & architectural",
     description: "A stronger contemporary counterpoint using simplified geometry, controlled contrast, and shapes that echo river bends, rhythm, and ironwork.",
     palette: ["#173f45", "#f1eadc", "#a95745", "#bb8b3e"],
+    collection: "The clearest hotel identity: crisp, memorable, and able to hold its own against the rooms’ strong color and pattern."
   },
   c: {
-    name: "Collected Archive",
-    short: "Layered & storied",
+    letter: "C", name: "Collected Archive", short: "Layered & storied",
     description: "A refined grouping of botanical, landscape, and architectural studies brings the intimacy of a thoughtfully collected New Orleans residence.",
     palette: ["#604b38", "#e6dcc8", "#76808a", "#a77b52"],
-  },
+    collection: "The most residential direction: layered, intimate, and varied enough to make every room feel individually collected."
+  }
 };
 
 const rooms = [
-  {
-    id: "checker", number: "Room 01", name: "Blue Toile",
-    description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.",
-    images: { a: "/assets/checker-a.jpg", b: "/assets/checker-b.jpg", c: "/assets/checker-c.jpg" },
-  },
-  {
-    id: "olive", number: "Room 02", name: "Olive Window",
-    description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.",
-    images: { a: "/assets/olive-a.jpg", b: "/assets/olive-b.jpg", c: "/assets/olive-c.jpg" },
-  },
-  {
-    id: "teal", number: "Room 03", name: "Deep Teal",
-    description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.",
-    images: { a: "/assets/teal-a.jpg", b: "/assets/teal-b.jpg", c: "/assets/teal-c.jpg" },
-  },
-  {
-    id: "terra", number: "Room 04", name: "Terracotta Botanical",
-    description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
-    images: { a: "/assets/terra-a.jpg", b: "/assets/terra-b.jpg", c: "/assets/terra-c.jpg" },
-  },
-  {
-    id: "peacock", number: "Room 05", name: "Peacock Blue",
-    description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.",
-    images: { a: "/assets/peacock-a.jpg", b: "/assets/peacock-b.jpg", c: "/assets/peacock-c.jpg" },
-  },
-  {
-    id: "ivory", number: "Room 06", name: "Ivory & Green",
-    description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.",
-    images: { a: "/assets/ivory-a.jpg", b: "/assets/ivory-b.jpg", c: "/assets/ivory-c.jpg" },
-  },
+  { id: "checker", number: "Room 01", name: "Blue Toile", description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.", images: { a: "assets/checker-a.jpg", b: "assets/checker-b.jpg", c: "assets/checker-c.jpg" } },
+  { id: "olive", number: "Room 02", name: "Olive Window", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" } },
+  { id: "teal", number: "Room 03", name: "Deep Teal", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.", images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" } },
+  { id: "terra", number: "Room 04", name: "Terracotta Botanical", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" } },
+  { id: "peacock", number: "Room 05", name: "Peacock Blue", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" } },
+  { id: "ivory", number: "Room 06", name: "Ivory & Green", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" } }
 ];
 
 let activeRoom = rooms[0].id;
 let activeDirection = "a";
+let collectionDirection = "a";
 let viewMode = "focus";
 const state = JSON.parse(localStorage.getItem("erato-direction-state") || "{}");
 const $ = (id) => document.getElementById(id);
-const roomNav = $("room-nav");
-const directionTabs = $("direction-tabs");
 
 function roomState(id) {
   const current = state[id] || {};
@@ -67,43 +42,72 @@ function roomState(id) {
     note: current.note || "",
     direction: current.direction || "a",
     frame: current.frame || "Dark walnut",
-    scale: current.scale || "Balanced",
+    scale: current.scale || "Balanced"
   };
   return state[id];
 }
 
-function save(message = "Saved just now in this browser.") {
-  localStorage.setItem("erato-direction-state", JSON.stringify(state));
-  $("save-status").textContent = message;
-  updateDecisionCount();
+function isComplete(id) {
+  const saved = roomState(id);
+  return saved.shortlist.length > 0 || saved.note.trim().length > 0;
 }
 
-function updateDecisionCount() {
-  const count = rooms.reduce((total, room) => total + roomState(room.id).shortlist.length, 0);
-  $("decision-count").textContent = count;
+function save(message = "Saved locally") {
+  localStorage.setItem("erato-direction-state", JSON.stringify(state));
+  $("save-status").textContent = message;
+  updateProgress();
+}
+
+let toastTimer;
+function toast(message) {
+  clearTimeout(toastTimer);
+  $("toast").textContent = message;
+  $("toast").classList.add("show");
+  toastTimer = setTimeout(() => $("toast").classList.remove("show"), 1800);
+}
+
+function updateProgress() {
+  const decisions = rooms.reduce((sum, room) => sum + roomState(room.id).shortlist.length, 0);
+  const complete = rooms.filter((room) => isComplete(room.id)).length;
+  $("decision-count").textContent = decisions;
+  $("rooms-shaped").textContent = complete;
+  $("progress-fill").style.width = `${(complete / rooms.length) * 100}%`;
 }
 
 function renderNav() {
-  roomNav.innerHTML = rooms.map((room) => {
-    const count = roomState(room.id).shortlist.length;
+  $("room-nav").innerHTML = rooms.map((room) => {
+    const saved = roomState(room.id);
     return `<button class="room-button ${room.id === activeRoom ? "active" : ""}" data-room="${room.id}">
-      <strong>${room.name}</strong><small>${room.number}${count ? ` · ${count} shortlisted` : ""}</small>
+      <img class="room-thumb" src="${room.images[saved.direction]}" alt="">
+      <span class="room-button-copy"><strong>${room.name}</strong><small>${room.number}${saved.shortlist.length ? ` · ${saved.shortlist.length} saved` : ""}</small></span>
+      <span class="room-status ${isComplete(room.id) ? "complete" : ""}" aria-label="${isComplete(room.id) ? "Room shaped" : "No decision yet"}">✓</span>
     </button>`;
   }).join("");
-  roomNav.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
-    activeRoom = button.dataset.room;
-    activeDirection = roomState(activeRoom).direction;
-    render();
-  }));
+  $("room-nav").querySelectorAll("[data-room]").forEach((button) => button.addEventListener("click", () => selectRoom(button.dataset.room)));
 }
 
 function renderTabs() {
   const saved = roomState(activeRoom);
-  directionTabs.innerHTML = Object.entries(directions).map(([id, option]) => `
-    <button class="direction-tab ${id === activeDirection ? "active" : ""} ${saved.shortlist.includes(id) ? "shortlisted" : ""}" data-direction="${id}">
-      ${option.name}
+  $("direction-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `
+    <button class="direction-tab ${id === activeDirection ? "active" : ""}" data-direction="${id}" aria-pressed="${id === activeDirection}">
+      <span class="direction-letter">${option.letter}</span>
+      <span class="direction-copy"><strong>${option.name}</strong><small>${option.short}</small></span>
+      <span class="direction-heart">${saved.shortlist.includes(id) ? "♥" : ""}</span>
     </button>`).join("");
-  directionTabs.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => selectDirection(button.dataset.direction)));
+  $("direction-tabs").querySelectorAll("[data-direction]").forEach((button) => button.addEventListener("click", () => selectDirection(button.dataset.direction)));
+}
+
+function selectRoom(id) {
+  activeRoom = id;
+  activeDirection = roomState(id).direction;
+  viewMode = "focus";
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function changeRoom(step) {
+  const index = rooms.findIndex((room) => room.id === activeRoom);
+  selectRoom(rooms[(index + step + rooms.length) % rooms.length].id);
 }
 
 function selectDirection(id) {
@@ -116,8 +120,13 @@ function selectDirection(id) {
 function toggleShortlist(id = activeDirection) {
   const shortlist = roomState(activeRoom).shortlist;
   const index = shortlist.indexOf(id);
-  if (index >= 0) shortlist.splice(index, 1);
-  else shortlist.push(id);
+  if (index >= 0) {
+    shortlist.splice(index, 1);
+    toast(`${directions[id].name} removed from shortlist`);
+  } else {
+    shortlist.push(id);
+    toast(`${directions[id].name} saved for this room`);
+  }
   save();
   render();
 }
@@ -126,14 +135,11 @@ function renderCompare(room) {
   const saved = roomState(room.id);
   $("compare-stage").innerHTML = Object.entries(directions).map(([id, option]) => `
     <article class="compare-card">
-      <img src="${room.images[id]}" alt="${room.name} — ${option.name}">
+      <div class="compare-card-image"><img src="${room.images[id]}" alt="${room.name} — ${option.name}"><span class="compare-badge">${option.letter}</span></div>
       <div class="compare-card-body">
-        <div class="compare-card-title"><h3>${option.name}</h3><span>${saved.shortlist.includes(id) ? "♥" : ""}</span></div>
+        <div class="compare-card-title"><h3>${option.name}</h3><span class="direction-heart">${saved.shortlist.includes(id) ? "♥" : ""}</span></div>
         <p>${option.short}</p>
-        <div class="compare-card-actions">
-          <button class="primary" data-focus="${id}">View large</button>
-          <button data-shortlist="${id}">${saved.shortlist.includes(id) ? "Remove" : "Shortlist"}</button>
-        </div>
+        <div class="compare-card-actions"><button class="primary" data-focus="${id}">View large</button><button data-shortlist="${id}">${saved.shortlist.includes(id) ? "Remove" : "Save option"}</button></div>
       </div>
     </article>`).join("");
   $("compare-stage").querySelectorAll("[data-focus]").forEach((button) => button.addEventListener("click", () => {
@@ -143,13 +149,55 @@ function renderCompare(room) {
   $("compare-stage").querySelectorAll("[data-shortlist]").forEach((button) => button.addEventListener("click", () => toggleShortlist(button.dataset.shortlist)));
 }
 
+function renderCollection() {
+  $("collection-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `<button class="collection-tab ${id === collectionDirection ? "active" : ""}" data-collection-direction="${id}">${option.letter} · ${option.name}</button>`).join("");
+  $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${room.images[collectionDirection]}" alt="${room.name} — ${directions[collectionDirection].name}"><span>${room.number} · ${room.name}</span></button>`).join("");
+  $("collection-summary").textContent = directions[collectionDirection].collection;
+  $("collection-tabs").querySelectorAll("[data-collection-direction]").forEach((button) => button.addEventListener("click", () => {
+    collectionDirection = button.dataset.collectionDirection;
+    renderCollection();
+  }));
+  $("collection-grid").querySelectorAll("[data-collection-room]").forEach((button) => button.addEventListener("click", () => {
+    closeCollection();
+    selectRoom(button.dataset.collectionRoom);
+    selectDirection(collectionDirection);
+  }));
+}
+
+function openCollection() {
+  collectionDirection = activeDirection;
+  renderCollection();
+  $("collection-backdrop").hidden = false;
+  requestAnimationFrame(() => $("collection-modal").classList.add("open"));
+  $("collection-modal").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeCollection() {
+  $("collection-modal").classList.remove("open");
+  $("collection-modal").setAttribute("aria-hidden", "true");
+  setTimeout(() => { $("collection-backdrop").hidden = true; }, 220);
+  document.body.style.overflow = "";
+}
+
+function applyCollection() {
+  rooms.forEach((room) => { roomState(room.id).direction = collectionDirection; });
+  activeDirection = collectionDirection;
+  save();
+  closeCollection();
+  render();
+  toast(`${directions[collectionDirection].name} set across all six rooms`);
+}
+
 function render() {
   const room = rooms.find((item) => item.id === activeRoom);
+  const roomIndex = rooms.indexOf(room);
   const choice = directions[activeDirection];
   const saved = roomState(room.id);
   renderNav();
   renderTabs();
   renderCompare(room);
+  $("room-position").textContent = `Bedroom ${String(roomIndex + 1).padStart(2, "0")} / ${String(rooms.length).padStart(2, "0")}`;
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
   $("room-description").textContent = room.description;
@@ -164,21 +212,23 @@ function render() {
   $("frame-choice").value = saved.frame;
   $("scale-choice").value = saved.scale;
   const selected = saved.shortlist.includes(activeDirection);
-  $("favorite-button").classList.toggle("active", selected);
-  $("favorite-button").setAttribute("aria-pressed", selected);
-  $("favorite-button").textContent = selected ? "♥ Shortlisted" : "♡ Shortlist option";
+  $("stage-shortlist").classList.toggle("active", selected);
+  $("stage-shortlist").setAttribute("aria-pressed", selected);
+  $("stage-shortlist").textContent = selected ? "♥ Saved to shortlist" : "♡ Save this direction";
   $("visual-stage").classList.toggle("hidden", viewMode === "compare");
   $("compare-stage").classList.toggle("active", viewMode === "compare");
   $("focus-view").classList.toggle("active", viewMode === "focus");
   $("compare-view").classList.toggle("active", viewMode === "compare");
-  updateDecisionCount();
+  const next = rooms[(roomIndex + 1) % rooms.length];
+  $("next-room-title").textContent = roomIndex === rooms.length - 1 ? "Return to the first room" : `Continue to ${next.name}`;
+  updateProgress();
 }
 
 function summaryText() {
   return rooms.map((room) => {
     const saved = roomState(room.id);
     const picks = saved.shortlist.length ? saved.shortlist.map((id) => directions[id].name).join(", ") : "No option shortlisted";
-    return `${room.number} — ${room.name}\nShortlist: ${picks}\nFrame: ${saved.frame}\nArt presence: ${saved.scale}\nNotes: ${saved.note || "—"}`;
+    return `${room.number} — ${room.name}\nWorking view: ${directions[saved.direction].name}\nShortlist: ${picks}\nFrame: ${saved.frame}\nArt presence: ${saved.scale}\nNotes: ${saved.note || "—"}`;
   }).join("\n\n");
 }
 
@@ -190,26 +240,52 @@ function openDrawer() {
   $("decision-summary").innerHTML = rooms.map((room) => {
     const saved = roomState(room.id);
     const picks = saved.shortlist.length ? saved.shortlist.map((id) => directions[id].name).join(", ") : "No option shortlisted";
-    return `<article class="summary-card"><h3>${room.name}</h3><p><strong>Shortlist:</strong> ${picks}</p><p><strong>Frame:</strong> ${saved.frame} · <strong>Presence:</strong> ${saved.scale}</p><p class="${saved.note ? "" : "empty"}">${saved.note ? escapeHTML(saved.note) : "No refinement note yet."}</p></article>`;
+    return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>${directions[saved.direction].name}</small></div><p><strong>Shortlist:</strong> ${picks}</p><p><strong>Frame:</strong> ${saved.frame} · <strong>Presence:</strong> ${saved.scale}</p><p class="${saved.note ? "" : "empty"}">${saved.note ? escapeHTML(saved.note) : "No refinement note yet."}</p></article>`;
   }).join("");
   $("drawer-backdrop").hidden = false;
   requestAnimationFrame(() => $("decision-drawer").classList.add("open"));
   $("decision-drawer").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
 }
 
 function closeDrawer() {
   $("decision-drawer").classList.remove("open");
   $("decision-drawer").setAttribute("aria-hidden", "true");
   setTimeout(() => { $("drawer-backdrop").hidden = true; }, 240);
+  document.body.style.overflow = "";
 }
 
-$("favorite-button").addEventListener("click", () => toggleShortlist());
+async function copySummary() {
+  const text = summaryText();
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    document.body.appendChild(helper);
+    helper.select();
+    document.execCommand("copy");
+    helper.remove();
+  }
+  toast("Decision notes copied");
+}
+
+$("stage-shortlist").addEventListener("click", () => toggleShortlist());
 $("focus-view").addEventListener("click", () => { viewMode = "focus"; render(); });
 $("compare-view").addEventListener("click", () => { viewMode = "compare"; render(); });
+$("previous-room").addEventListener("click", () => changeRoom(-1));
+$("next-room").addEventListener("click", () => changeRoom(1));
+$("next-room-large").addEventListener("click", () => changeRoom(1));
+$("collection-button").addEventListener("click", openCollection);
+$("close-collection").addEventListener("click", closeCollection);
+$("collection-backdrop").addEventListener("click", closeCollection);
+$("apply-collection").addEventListener("click", applyCollection);
 $("review-button").addEventListener("click", openDrawer);
 $("close-drawer").addEventListener("click", closeDrawer);
 $("drawer-backdrop").addEventListener("click", closeDrawer);
-document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeDrawer(); });
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") { closeCollection(); closeDrawer(); }
+});
 
 let noteTimer;
 $("room-note").addEventListener("input", (event) => {
@@ -218,21 +294,14 @@ $("room-note").addEventListener("input", (event) => {
   clearTimeout(noteTimer);
   noteTimer = setTimeout(save, 250);
 });
-
 $("frame-choice").addEventListener("change", (event) => { roomState(activeRoom).frame = event.target.value; save(); });
 $("scale-choice").addEventListener("change", (event) => { roomState(activeRoom).scale = event.target.value; save(); });
-
-$("copy-summary").addEventListener("click", async () => {
-  await navigator.clipboard.writeText(summaryText());
-  $("copy-summary").textContent = "Copied";
-  setTimeout(() => { $("copy-summary").textContent = "Copy summary"; }, 1400);
-});
-
+$("copy-summary").addEventListener("click", copySummary);
 $("download-summary").addEventListener("click", () => {
   const blob = new Blob([summaryText()], { type: "text/plain" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "1722-erato-art-direction-notes.txt";
+  link.download = "1722-erato-art-direction-decision-book.txt";
   link.click();
   URL.revokeObjectURL(link.href);
 });
