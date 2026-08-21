@@ -20,18 +20,21 @@ const directions = {
 };
 
 const rooms = [
-  { id: "checker", number: "Room 01", name: "Blue Toile", description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.", images: { a: "assets/checker-a.jpg", b: "assets/checker-b.jpg", c: "assets/checker-c.jpg" } },
-  { id: "olive", number: "Room 02", name: "Olive Window", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" } },
-  { id: "teal", number: "Room 03", name: "Deep Teal", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.", images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" } },
-  { id: "terra", number: "Room 04", name: "Terracotta Botanical", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" } },
-  { id: "peacock", number: "Room 05", name: "Peacock Blue", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" } },
-  { id: "ivory", number: "Room 06", name: "Ivory & Green", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" } }
+  { id: "checker", number: "Room 01", name: "Blue Toile", description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.", images: { a: "assets/checker-a.jpg", b: "assets/checker-b.jpg", c: "assets/checker-c.jpg" }, originals: ["7711","7712","7713","7714","7715","7716","7730","7731"] },
+  { id: "olive", number: "Room 02", name: "Olive Window", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" }, originals: ["7719","7720","7721","7722","7723","7724"] },
+  { id: "teal", number: "Room 03", name: "Deep Teal", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.", images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" }, originals: ["7717","7718"] },
+  { id: "terra", number: "Room 04", name: "Terracotta Botanical", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" }, originals: ["7725","7726","7727","7728","7729","7732","7733","7734","7735","7736","7737","7738"] },
+  { id: "peacock", number: "Room 05", name: "Peacock Blue", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" }, originals: ["7739","7740"] },
+  { id: "ivory", number: "Room 06", name: "Ivory & Green", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] }
 ];
 
 let activeRoom = rooms[0].id;
 let activeDirection = "a";
 let collectionDirection = "a";
 let viewMode = "focus";
+let archiveView = "originals";
+let lightboxItems = [];
+let lightboxIndex = 0;
 const state = JSON.parse(localStorage.getItem("erato-direction-state") || "{}");
 const $ = (id) => document.getElementById(id);
 
@@ -101,6 +104,7 @@ function selectRoom(id) {
   activeRoom = id;
   activeDirection = roomState(id).direction;
   viewMode = "focus";
+  archiveView = "originals";
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -164,6 +168,64 @@ function renderCollection() {
   }));
 }
 
+function archiveItems(room) {
+  if (archiveView === "renderings") {
+    return Object.entries(directions).map(([id, direction]) => ({
+      src: room.images[id],
+      label: direction.name,
+      meta: `${direction.letter} · Concept rendering`
+    }));
+  }
+  return room.originals.map((number, index) => ({
+    src: `assets/originals/IMG_${number}.jpg`,
+    label: `${room.name} · Existing condition`,
+    meta: `Original ${String(index + 1).padStart(2, "0")} / ${String(room.originals.length).padStart(2, "0")}`
+  }));
+}
+
+function renderArchive(room) {
+  lightboxItems = archiveItems(room);
+  $("original-count").textContent = room.originals.length;
+  $("archive-description").textContent = archiveView === "originals"
+    ? `${room.originals.length} source photographs document the room, its millwork, and adjoining spaces.`
+    : "All three art languages shown together for direct comparison.";
+  $("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.classList.toggle("active", button.dataset.archiveView === archiveView));
+  $("archive-grid").innerHTML = lightboxItems.map((item, index) => `
+    <button class="archive-card" data-archive-index="${index}" type="button">
+      <img src="${item.src}" alt="${item.label}">
+      <span class="archive-caption"><span>${item.label}</span><small>${item.meta}</small></span>
+    </button>`).join("");
+  $("archive-grid").querySelectorAll("[data-archive-index]").forEach((button) => button.addEventListener("click", () => openLightbox(Number(button.dataset.archiveIndex))));
+}
+
+function updateLightbox() {
+  const item = lightboxItems[lightboxIndex];
+  if (!item) return;
+  $("lightbox-image").src = item.src;
+  $("lightbox-image").alt = item.label;
+  $("lightbox-label").textContent = item.label;
+  $("lightbox-position").textContent = `${lightboxIndex + 1} / ${lightboxItems.length} · ${item.meta}`;
+}
+
+function openLightbox(index) {
+  lightboxIndex = index;
+  updateLightbox();
+  $("image-lightbox").classList.add("open");
+  $("image-lightbox").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  $("image-lightbox").classList.remove("open");
+  $("image-lightbox").setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function changeLightbox(step) {
+  lightboxIndex = (lightboxIndex + step + lightboxItems.length) % lightboxItems.length;
+  updateLightbox();
+}
+
 function openCollection() {
   collectionDirection = activeDirection;
   renderCollection();
@@ -197,6 +259,7 @@ function render() {
   renderNav();
   renderTabs();
   renderCompare(room);
+  renderArchive(room);
   $("room-position").textContent = `Bedroom ${String(roomIndex + 1).padStart(2, "0")} / ${String(rooms.length).padStart(2, "0")}`;
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
@@ -283,8 +346,18 @@ $("apply-collection").addEventListener("click", applyCollection);
 $("review-button").addEventListener("click", openDrawer);
 $("close-drawer").addEventListener("click", closeDrawer);
 $("drawer-backdrop").addEventListener("click", closeDrawer);
+$("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.addEventListener("click", () => {
+  archiveView = button.dataset.archiveView;
+  renderArchive(rooms.find((room) => room.id === activeRoom));
+}));
+$("close-lightbox").addEventListener("click", closeLightbox);
+$("image-lightbox").addEventListener("click", (event) => { if (event.target === $("image-lightbox")) closeLightbox(); });
+$("previous-image").addEventListener("click", () => changeLightbox(-1));
+$("next-image").addEventListener("click", () => changeLightbox(1));
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") { closeCollection(); closeDrawer(); }
+  if (event.key === "Escape") { closeLightbox(); closeCollection(); closeDrawer(); }
+  if ($("image-lightbox").classList.contains("open") && event.key === "ArrowLeft") changeLightbox(-1);
+  if ($("image-lightbox").classList.contains("open") && event.key === "ArrowRight") changeLightbox(1);
 });
 
 let noteTimer;
