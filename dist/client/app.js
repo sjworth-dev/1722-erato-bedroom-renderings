@@ -178,6 +178,14 @@ function renderCollection() {
   }));
 }
 
+function originalItems(room) {
+  return room.originals.map((number, index) => ({
+    src: `assets/originals/IMG_${number}.jpg`,
+    label: `${room.name} · Existing condition`,
+    meta: `Original ${String(index + 1).padStart(2, "0")} / ${String(room.originals.length).padStart(2, "0")}`
+  }));
+}
+
 function archiveItems(room) {
   if (archiveView === "renderings") {
     if (room.sourceOnly) return [];
@@ -187,10 +195,19 @@ function archiveItems(room) {
       meta: `${direction.letter} · Concept rendering`
     }));
   }
-  return room.originals.map((number, index) => ({
-    src: `assets/originals/IMG_${number}.jpg`,
-    label: `${room.name} · Existing condition`,
-    meta: `Original ${String(index + 1).padStart(2, "0")} / ${String(room.originals.length).padStart(2, "0")}`
+  return originalItems(room);
+}
+
+function renderSourceStrip(room) {
+  const items = originalItems(room);
+  $("source-photo-count").textContent = items.length;
+  $("source-strip-grid").innerHTML = items.slice(0, 4).map((item, index) => `
+    <button class="source-thumb" data-source-index="${index}" type="button">
+      <img src="${item.src}" alt="${item.label}"><span>Original ${String(index + 1).padStart(2, "0")}</span>
+    </button>`).join("");
+  $("source-strip-grid").querySelectorAll("[data-source-index]").forEach((button) => button.addEventListener("click", () => {
+    lightboxItems = items;
+    openLightbox(Number(button.dataset.sourceIndex));
   }));
 }
 
@@ -274,6 +291,7 @@ function render() {
   renderTabs();
   renderCompare(room);
   renderArchive(room);
+  renderSourceStrip(room);
   $("room-total").textContent = rooms.length;
   $("source-room-notice").hidden = !room.sourceOnly;
   $("main-panel").classList.toggle("source-room", Boolean(room.sourceOnly));
@@ -365,6 +383,11 @@ $("apply-collection").addEventListener("click", applyCollection);
 $("review-button").addEventListener("click", openDrawer);
 $("close-drawer").addEventListener("click", closeDrawer);
 $("drawer-backdrop").addEventListener("click", closeDrawer);
+$("view-all-originals").addEventListener("click", () => {
+  archiveView = "originals";
+  renderArchive(rooms.find((room) => room.id === activeRoom));
+  $("archive-heading").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 $("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.addEventListener("click", () => {
   archiveView = button.dataset.archiveView;
   renderArchive(rooms.find((room) => room.id === activeRoom));

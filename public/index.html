@@ -8,7 +8,7 @@
   <meta property="og:description" content="Compare, shortlist, and refine the bedroom art program for 1722 Erato Hotel Villas.">
   <meta property="og:image" content="og.png">
   <title>Erato Art Direction Studio</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <header class="topbar">
@@ -56,6 +56,14 @@
       <section id="source-room-notice" class="source-room-notice" hidden>
         <span>New source room</span>
         <p>This room has been added from the original photo set. Its three art-direction renderings are the next design step.</p>
+      </section>
+
+      <section class="source-photo-strip" aria-labelledby="source-photo-heading">
+        <div class="source-strip-heading">
+          <div><p class="eyebrow">Original room photographs</p><h2 id="source-photo-heading">See the room before the renderings.</h2></div>
+          <button id="view-all-originals" type="button">View all <b id="source-photo-count">0</b> originals <span>↓</span></button>
+        </div>
+        <div id="source-strip-grid" class="source-strip-grid"></div>
       </section>
 
       <section class="direction-section" aria-labelledby="direction-heading">
@@ -152,6 +160,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <footer><p>Concept renderings for art-direction decisions. Final artwork dimensions and procurement should be verified against field measurements.</p></footer>
-  <script src="app.js"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
