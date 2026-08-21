@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive art-direction studio for the bedrooms at 1722 Erato Hotel Villas.">
+  <meta property="og:title" content="Erato Art Direction Lab">
+  <meta property="og:description" content="Compare, shortlist, and refine the bedroom art program for 1722 Erato Hotel Villas.">
+  <meta property="og:image" content="/og.jpg">
+  <title>Erato Art Direction Lab</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand-mark">E</div>
+    <div>
+      <p class="eyebrow">1722 Erato Hotel Villas</p>
+      <h1>Art Direction Lab</h1>
+    </div>
+    <div class="header-actions">
+      <div class="header-status"><span></span> Working collection</div>
+      <button id="review-button" class="review-button" type="button">Review decisions <b id="decision-count">0</b></button>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="sidebar-intro">
+        <p class="eyebrow">Bedroom study</p>
+        <h2>Choose a room</h2>
+      </div>
+      <nav id="room-nav" class="room-nav" aria-label="Bedrooms"></nav>
+      <div class="sidebar-note">
+        <strong>How to use this</strong>
+        <p>Compare the three art languages, shortlist what feels right, and leave a note for the next revision.</p>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <section class="room-heading">
+        <div>
+          <p id="room-kicker" class="eyebrow"></p>
+          <h2 id="room-title"></h2>
+          <p id="room-description" class="room-description"></p>
+        </div>
+        <button id="favorite-button" class="favorite-button" type="button" aria-pressed="false">♡ Shortlist option</button>
+      </section>
+
+      <div class="direction-bar">
+        <section class="direction-tabs" id="direction-tabs" aria-label="Art direction options"></section>
+        <div class="view-toggle" aria-label="Viewing mode">
+          <button id="focus-view" class="active" type="button">Focus</button>
+          <button id="compare-view" type="button">Compare all</button>
+        </div>
+      </div>
+
+      <section class="visual-stage" id="visual-stage">
+        <img id="hero-image" src="" alt="">
+        <div class="image-label"><span id="image-option"></span><small id="image-caption"></small></div>
+      </section>
+      <section class="compare-stage" id="compare-stage" aria-label="Compare all directions"></section>
+
+      <section class="details-grid">
+        <article class="detail-card">
+          <p class="eyebrow">Direction notes</p>
+          <h3 id="direction-name"></h3>
+          <p id="direction-description"></p>
+          <div id="palette" class="palette" aria-label="Color palette"></div>
+        </article>
+        <article class="detail-card note-card">
+          <label for="room-note" class="eyebrow">Your refinement note</label>
+          <textarea id="room-note" rows="5" placeholder="What should change in the next rendering?"></textarea>
+          <div class="decision-fields">
+            <label>Frame finish
+              <select id="frame-choice">
+                <option>Dark walnut</option>
+                <option>Aged brass</option>
+                <option>Mixed walnut + brass</option>
+                <option>Blackened bronze</option>
+              </select>
+            </label>
+            <label>Art presence
+              <select id="scale-choice">
+                <option>Balanced</option>
+                <option>Quiet / intimate</option>
+                <option>Statement scale</option>
+                <option>Collected grouping</option>
+              </select>
+            </label>
+          </div>
+          <p class="save-status" id="save-status">Notes save automatically in this browser.</p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="decision-drawer" id="decision-drawer" aria-hidden="true" aria-label="Art program decisions">
+    <div class="drawer-header">
+      <div><p class="eyebrow">Working art program</p><h2>Decision summary</h2></div>
+      <button id="close-drawer" type="button" aria-label="Close decision summary">×</button>
+    </div>
+    <div id="decision-summary" class="decision-summary"></div>
+    <div class="drawer-actions">
+      <button id="copy-summary" type="button">Copy summary</button>
+      <button id="download-summary" type="button">Download notes</button>
+    </div>
+  </aside>
+
+  <footer>
+    <p>Concept renderings for art-direction decisions. Final artwork dimensions and procurement should be verified against field measurements.</p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

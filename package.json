@@ -1,0 +1,10 @@
+{
+  "name": "erato-art-direction-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 3010 --bind 127.0.0.1 --directory public",
+    "build": "sh scripts/build.sh"
+  }
+}
