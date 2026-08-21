@@ -20,14 +20,29 @@ const directions = {
 };
 
 const rooms = [
-  { id: "checker", number: "Room 01", name: "C105", description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. Art belongs on the daybed wall as a clean counterpoint.", images: { a: "assets/checker-a.jpg", b: "assets/checker-b.jpg", c: "assets/checker-c.jpg" }, originals: ["7712","7713","7714","7715","7716"] },
+  {
+    id: "checker",
+    number: "Room 01",
+    name: "C105",
+    description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. This first local-art study tests three New Orleans–rooted mediums on the daybed wall.",
+    images: { a: "assets/checker-local-a.png", b: "assets/checker-local-b.png", c: "assets/checker-local-c.png" },
+    options: {
+      a: { name: "River Darkroom", short: "Hand-toned photography", description: "An atmospheric silver-gelatin view of the working Mississippi—fog, current, levee, and industry—offers a specific sense of place without relying on a recognizable landmark.", palette: ["#242726", "#b7b4ad", "#6f7677", "#d8d0bf"] },
+      b: { name: "Delta Patchwork", short: "Hand-stitched fiber art", description: "Naturally dyed indigo linen, oyster-gray cotton, and visible hand stitching abstract river bends, shotgun-house plans, and Gulf South quilt logic into a tactile contemporary work.", palette: ["#142d42", "#d8d0bd", "#777b7a", "#9b493b"] },
+      c: { name: "Sediment Relief", short: "Cast plaster & brass", description: "A dimensional lime-plaster relief translates delta sediment, rain marks, and fragments of local ironwork into quiet topography, with oxidized brass and mineral pigment catching the room’s light.", palette: ["#d7ccb4", "#8b806d", "#34444a", "#69513d"] }
+    },
+    originals: ["7712","7713","7714","7715","7716"]
+  },
   { id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" }, originals: ["7719","7720","7721","7722","7723","7724"] },
   { id: "teal", number: "Room 03", name: "C112", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.", images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" }, originals: ["7717","7718"] },
-  { id: "terra", number: "Room 04", name: "Terracotta Botanical", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" }, originals: ["7725","7726","7727","7728","7729","7732","7733","7734","7735","7736","7737","7738"] },
-  { id: "peacock", number: "Room 05", name: "Peacock Blue", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" }, originals: ["7739","7740"] },
-  { id: "ivory", number: "Room 06", name: "Ivory & Green", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] },
-  { id: "teal-built-in", number: "Room 07", name: "Teal Built-In", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
-  { id: "pale-blue-toile", number: "Room 08", name: "Pale Blue Toile", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true }
+  { id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" }, originals: ["7725","7726"] },
+  { id: "peacock", number: "Room 05", name: "C215", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" }, originals: ["7739","7740"] },
+  { id: "ivory", number: "Room 06", name: "C217", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] },
+  { id: "teal-built-in", number: "Room 07", name: "C103", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
+  { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true },
+  { id: "terra-b", number: "Room 09", name: "Terracotta Botanical B", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7727","7728"], sourceOnly: true },
+  { id: "terra-c", number: "Room 10", name: "Terracotta Botanical C", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7732","7733","7734"], sourceOnly: true },
+  { id: "terra-d", number: "Room 11", name: "Terracotta Botanical D", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7735","7736","7737"], sourceOnly: true }
 ];
 
 let activeRoom = rooms[0].id;
@@ -59,6 +74,10 @@ function isComplete(id) {
 
 function roomImage(room, direction = "a") {
   return room.sourceOnly ? `assets/originals/IMG_${room.originals[0]}.jpg` : room.images[direction];
+}
+
+function optionFor(room, id) {
+  return { ...directions[id], ...(room.options?.[id] || {}) };
 }
 
 function save(message = "Saved locally") {
@@ -96,13 +115,17 @@ function renderNav() {
 }
 
 function renderTabs() {
+  const room = rooms.find((item) => item.id === activeRoom);
   const saved = roomState(activeRoom);
-  $("direction-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `
+  $("direction-tabs").innerHTML = Object.keys(directions).map((id) => {
+    const option = optionFor(room, id);
+    return `
     <button class="direction-tab ${id === activeDirection ? "active" : ""}" data-direction="${id}" aria-pressed="${id === activeDirection}">
       <span class="direction-letter">${option.letter}</span>
       <span class="direction-copy"><strong>${option.name}</strong><small>${option.short}</small></span>
       <span class="direction-heart">${saved.shortlist.includes(id) ? "♥" : ""}</span>
-    </button>`).join("");
+    </button>`;
+  }).join("");
   $("direction-tabs").querySelectorAll("[data-direction]").forEach((button) => button.addEventListener("click", () => selectDirection(button.dataset.direction)));
 }
 
@@ -128,14 +151,16 @@ function selectDirection(id) {
 }
 
 function toggleShortlist(id = activeDirection) {
+  const room = rooms.find((item) => item.id === activeRoom);
+  const option = optionFor(room, id);
   const shortlist = roomState(activeRoom).shortlist;
   const index = shortlist.indexOf(id);
   if (index >= 0) {
     shortlist.splice(index, 1);
-    toast(`${directions[id].name} removed from shortlist`);
+    toast(`${option.name} removed from shortlist`);
   } else {
     shortlist.push(id);
-    toast(`${directions[id].name} saved for this room`);
+    toast(`${option.name} saved for this room`);
   }
   save();
   render();
@@ -147,7 +172,9 @@ function renderCompare(room) {
     return;
   }
   const saved = roomState(room.id);
-  $("compare-stage").innerHTML = Object.entries(directions).map(([id, option]) => `
+  $("compare-stage").innerHTML = Object.keys(directions).map((id) => {
+    const option = optionFor(room, id);
+    return `
     <article class="compare-card">
       <div class="compare-card-image"><img src="${room.images[id]}" alt="${room.name} — ${option.name}"><span class="compare-badge">${option.letter}</span></div>
       <div class="compare-card-body">
@@ -155,7 +182,8 @@ function renderCompare(room) {
         <p>${option.short}</p>
         <div class="compare-card-actions"><button class="primary" data-focus="${id}">View large</button><button data-shortlist="${id}">${saved.shortlist.includes(id) ? "Remove" : "Save option"}</button></div>
       </div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
   $("compare-stage").querySelectorAll("[data-focus]").forEach((button) => button.addEventListener("click", () => {
     viewMode = "focus";
     selectDirection(button.dataset.focus);
@@ -165,7 +193,7 @@ function renderCompare(room) {
 
 function renderCollection() {
   $("collection-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `<button class="collection-tab ${id === collectionDirection ? "active" : ""}" data-collection-direction="${id}">${option.letter} · ${option.name}</button>`).join("");
-  $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${roomImage(room, collectionDirection)}" alt="${room.name}${room.sourceOnly ? " — original condition" : ` — ${directions[collectionDirection].name}`}"><span>${room.number} · ${room.name}${room.sourceOnly ? " · Source only" : ""}</span></button>`).join("");
+  $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${roomImage(room, collectionDirection)}" alt="${room.name}${room.sourceOnly ? " — original condition" : ` — ${optionFor(room, collectionDirection).name}`}"><span>${room.number} · ${room.name}${room.sourceOnly ? " · Source only" : ""}</span></button>`).join("");
   $("collection-summary").textContent = directions[collectionDirection].collection;
   $("collection-tabs").querySelectorAll("[data-collection-direction]").forEach((button) => button.addEventListener("click", () => {
     collectionDirection = button.dataset.collectionDirection;
@@ -189,11 +217,14 @@ function originalItems(room) {
 function archiveItems(room) {
   if (archiveView === "renderings") {
     if (room.sourceOnly) return [];
-    return Object.entries(directions).map(([id, direction]) => ({
+    return Object.keys(directions).map((id) => {
+      const direction = optionFor(room, id);
+      return {
       src: room.images[id],
       label: direction.name,
       meta: `${direction.letter} · Concept rendering`
-    }));
+      };
+    });
   }
   return originalItems(room);
 }
@@ -285,7 +316,7 @@ function applyCollection() {
 function render() {
   const room = rooms.find((item) => item.id === activeRoom);
   const roomIndex = rooms.indexOf(room);
-  const choice = directions[activeDirection];
+  const choice = optionFor(room, activeDirection);
   const saved = roomState(room.id);
   renderNav();
   renderTabs();
@@ -326,8 +357,8 @@ function summaryText() {
   return rooms.map((room) => {
     const saved = roomState(room.id);
     if (room.sourceOnly) return `${room.number} — ${room.name}\nStatus: Source room added; art-direction renderings pending\nOriginal photographs: ${room.originals.length}`;
-    const picks = saved.shortlist.length ? saved.shortlist.map((id) => directions[id].name).join(", ") : "No option shortlisted";
-    return `${room.number} — ${room.name}\nWorking view: ${directions[saved.direction].name}\nShortlist: ${picks}\nFrame: ${saved.frame}\nArt presence: ${saved.scale}\nNotes: ${saved.note || "—"}`;
+    const picks = saved.shortlist.length ? saved.shortlist.map((id) => optionFor(room, id).name).join(", ") : "No option shortlisted";
+    return `${room.number} — ${room.name}\nWorking view: ${optionFor(room, saved.direction).name}\nShortlist: ${picks}\nFrame: ${saved.frame}\nArt presence: ${saved.scale}\nNotes: ${saved.note || "—"}`;
   }).join("\n\n");
 }
 
@@ -339,8 +370,8 @@ function openDrawer() {
   $("decision-summary").innerHTML = rooms.map((room) => {
     const saved = roomState(room.id);
     if (room.sourceOnly) return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>Source room</small></div><p><strong>Status:</strong> Art-direction renderings pending</p><p>${room.originals.length} original photograph${room.originals.length === 1 ? "" : "s"} added.</p></article>`;
-    const picks = saved.shortlist.length ? saved.shortlist.map((id) => directions[id].name).join(", ") : "No option shortlisted";
-    return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>${directions[saved.direction].name}</small></div><p><strong>Shortlist:</strong> ${picks}</p><p><strong>Frame:</strong> ${saved.frame} · <strong>Presence:</strong> ${saved.scale}</p><p class="${saved.note ? "" : "empty"}">${saved.note ? escapeHTML(saved.note) : "No refinement note yet."}</p></article>`;
+    const picks = saved.shortlist.length ? saved.shortlist.map((id) => optionFor(room, id).name).join(", ") : "No option shortlisted";
+    return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>${optionFor(room, saved.direction).name}</small></div><p><strong>Shortlist:</strong> ${picks}</p><p><strong>Frame:</strong> ${saved.frame} · <strong>Presence:</strong> ${saved.scale}</p><p class="${saved.note ? "" : "empty"}">${saved.note ? escapeHTML(saved.note) : "No refinement note yet."}</p></article>`;
   }).join("");
   $("drawer-backdrop").hidden = false;
   requestAnimationFrame(() => $("decision-drawer").classList.add("open"));
