@@ -24,12 +24,12 @@ const rooms = [
     id: "checker",
     number: "Room 01",
     name: "C105",
-    description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. This first local-art study tests three New Orleans–rooted mediums on the daybed wall.",
-    images: { a: "assets/checker-local-a.png", b: "assets/checker-local-b.png", c: "assets/checker-local-c.png" },
+    description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. This spatial-art study treats the daybed wall as architecture rather than a place for conventionally framed work.",
+    images: { a: "assets/checker-spatial-a.png", b: "assets/checker-spatial-b.png", c: "assets/checker-spatial-c.png" },
     options: {
-      a: { name: "River Darkroom", short: "Hand-toned photography", description: "An atmospheric silver-gelatin view of the working Mississippi—fog, current, levee, and industry—offers a specific sense of place without relying on a recognizable landmark.", palette: ["#242726", "#b7b4ad", "#6f7677", "#d8d0bf"] },
-      b: { name: "Delta Patchwork", short: "Hand-stitched fiber art", description: "Naturally dyed indigo linen, oyster-gray cotton, and visible hand stitching abstract river bends, shotgun-house plans, and Gulf South quilt logic into a tactile contemporary work.", palette: ["#142d42", "#d8d0bd", "#777b7a", "#9b493b"] },
-      c: { name: "Sediment Relief", short: "Cast plaster & brass", description: "A dimensional lime-plaster relief translates delta sediment, rain marks, and fragments of local ironwork into quiet topography, with oxidized brass and mineral pigment catching the room’s light.", palette: ["#d7ccb4", "#8b806d", "#34444a", "#69513d"] }
+      a: { name: "River Skin", short: "Wall-integrated limewash fresco", description: "Translucent mineral washes, tide lines, and soft drips spread directly across the plaster. The work has no object edge: it turns the wall itself into an atmospheric study of river sediment and summer rain.", palette: ["#ddd5c6", "#92999a", "#5d676b", "#a38b72"] },
+      b: { name: "Water Light", short: "Cast-glass light installation", description: "An organic constellation of hand-cast glass lenses and subtle concealed light scatters watery reflections across the room. Individual pieces suggest current and salvaged material without forming a picture.", palette: ["#e5dfd0", "#8a9b91", "#56666a", "#b69054"] },
+      c: { name: "Current Weave", short: "Fiber-and-cane soft sculpture", description: "Indigo cord, palmetto fiber, river cane, and oxidized copper move diagonally across the wall and corner as a monumental open weave—part net, part current, and fully spatial.", palette: ["#152b40", "#a68958", "#c9b895", "#584b3d"] }
     },
     originals: ["7712","7713","7714","7715","7716"]
   },
@@ -57,12 +57,14 @@ const $ = (id) => document.getElementById(id);
 
 function roomState(id) {
   const current = state[id] || {};
+  const resetForSpatialStudy = id === "checker" && current.conceptRevision !== "spatial-v2";
   state[id] = {
-    shortlist: Array.isArray(current.shortlist) ? current.shortlist : (current.favorite ? [current.direction || "a"] : []),
+    shortlist: resetForSpatialStudy ? [] : (Array.isArray(current.shortlist) ? current.shortlist : (current.favorite ? [current.direction || "a"] : [])),
     note: current.note || "",
-    direction: current.direction || "a",
-    frame: current.frame || "Dark walnut",
-    scale: current.scale || "Balanced"
+    direction: resetForSpatialStudy ? "a" : (current.direction || "a"),
+    frame: resetForSpatialStudy ? "Integrated / frameless" : (current.frame || "Dark walnut"),
+    scale: current.scale || "Balanced",
+    conceptRevision: id === "checker" ? "spatial-v2" : current.conceptRevision
   };
   return state[id];
 }
