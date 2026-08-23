@@ -52,9 +52,17 @@ const rooms = [
     originals: ["7712","7713","7714","7715","7716"]
   },
   {
-    id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with a king bed centered across the window, a solid upholstered headboard, and no console table. The open side wall carries the art while the window treatment becomes part of the composition.",
-    images: { a: "assets/olive-a-king.png", b: "assets/olive-b-king.png", c: "assets/olive-c-king.png" },
+    id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with a king bed centered across the window, a solid upholstered headboard, and no console table. The generous open wall is the collection's clearest opportunity for one museum-scale, site-specific art focal point.",
+    images: { a: "assets/olive-mississippi-cut.png", b: "assets/olive-tide-choir.png", c: "assets/olive-storm-veil.png" },
+    options: {
+      a: { name: "Mississippi Cut", short: "Backlit sinker-cypress relief", description: "A monumental slab of Louisiana sinker cypress is hand-gouged with topographic contours and cut through by one glowing river line. The irregular silhouette, deep grain, and concealed backlight make it read as the room's defining object rather than another picture.", palette: ["#241c18", "#b78a50", "#6c7662", "#d4c3a5"] },
+      b: { name: "Tide Choir", short: "Louisiana-clay wall constellation", description: "Dozens of individually formed local-clay pieces sweep across the wall like a rising current. Bone, rose clay, indigo, moss, and restrained copper glazes create a changing field of color, texture, and shadow that is handmade but still monumental.", palette: ["#ddd1bd", "#a5664f", "#172d35", "#94723c"] },
+      c: { name: "Storm Veil", short: "Palmetto, cane, copper + glass", description: "An airy, unframed commission of split palmetto, river cane, indigo cord, blackened copper, and cast-glass rain moves from a dense storm mass into loose windblown strands. It gives the wall scale and movement while allowing the green envelope to remain visible.", palette: ["#b28a54", "#1e2430", "#614e3c", "#aaa39a"] }
+    },
     allRenderings: [
+      { src: "assets/olive-mississippi-cut.png", label: "Mississippi Cut", meta: "Focal-point study · Backlit sinker-cypress relief" },
+      { src: "assets/olive-tide-choir.png", label: "Tide Choir", meta: "Focal-point study · Louisiana-clay wall constellation" },
+      { src: "assets/olive-storm-veil.png", label: "Storm Veil", meta: "Focal-point study · Palmetto, cane, copper + glass" },
       { src: "assets/olive-prelayout-marsh.png", label: "Louisiana Marsh — Pre-layout Study", meta: "Early rendering · Before bed revision" },
       { src: "assets/olive-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Atmospheric landscape" },
       { src: "assets/olive-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Textile geometry" },
