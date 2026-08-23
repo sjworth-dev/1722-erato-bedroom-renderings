@@ -95,9 +95,9 @@ const rooms = [
   },
   {
     id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
-    images: { a: "assets/terra-small-nocturne-9x12.png", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" },
+    images: { a: "assets/terra-two-small-nocturnes.png", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" },
     options: {
-      a: { name: "Tiny Nocturne", short: "A found 9 × 12 painting", description: "A very small Louisiana wetland nocturne feels personal and discovered rather than conventionally hotel-scaled. The abundant negative space quiets the bed wall and lets the layered wallpaper niche remain the room's primary gesture.", palette: ["#2f3028", "#705643", "#b66b4c", "#e6dac6"] }
+      a: { name: "Two Small Nocturnes", short: "A collected pair of tiny oils", description: "Two related-but-unmatched Louisiana wetland studies create a small, irregular composition with just enough visual rhythm. Their modest combined scale quiets the bed wall while allowing the layered wallpaper niche to remain the room's primary gesture.", palette: ["#2f3028", "#705643", "#b66b4c", "#e6dac6"] }
     },
     allRenderings: [
       { src: "assets/terra-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical diptych" },
@@ -110,7 +110,8 @@ const rooms = [
       { src: "assets/terra-current-veil-fiber.png", label: "Current Veil", meta: "Quiet edit · River cane and palmetto fiber" },
       { src: "assets/terra-sediment-wash-limewash.png", label: "Sediment Wash", meta: "Quiet edit · Integrated tonal limewash" },
       { src: "assets/terra-small-nocturne.png", label: "Small Nocturne", meta: "Quiet edit · Original oil on linen · 16 × 20 in" },
-      { src: "assets/terra-small-nocturne-9x12.png", label: "Tiny Nocturne", meta: "Quiet edit · Original oil on linen · 9 × 12 in" }
+      { src: "assets/terra-small-nocturne-9x12.png", label: "Tiny Nocturne", meta: "Quiet edit · Original oil on linen · 9 × 12 in" },
+      { src: "assets/terra-two-small-nocturnes.png", label: "Two Small Nocturnes", meta: "Quiet edit · Unmatched original oils · 8 × 10 + 10 × 8 in" }
     ],
     originals: ["7725","7726"]
   },
