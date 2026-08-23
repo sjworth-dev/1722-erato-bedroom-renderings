@@ -32,6 +32,7 @@ const rooms = [
       c: { name: "Current Weave", short: "Fiber-and-cane soft sculpture", description: "Indigo cord, palmetto fiber, river cane, and oxidized copper move diagonally across the wall and corner as a monumental open weave—part net, part current, and fully spatial.", palette: ["#152b40", "#a68958", "#c9b895", "#584b3d"] }
     },
     allRenderings: [
+      { src: "assets/checker-early-bayou.png", label: "Blue Bayou Botanical — Alternate", meta: "Early study · Revised wallpaper wall" },
       { src: "assets/checker-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
       { src: "assets/checker-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Graphic print" },
       { src: "assets/checker-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
@@ -41,15 +42,93 @@ const rooms = [
       { src: "assets/checker-spatial-a.png", label: "River Skin", meta: "Round 03 · Wall-integrated fresco" },
       { src: "assets/checker-spatial-b.png", label: "Water Light", meta: "Round 03 · Cast-glass installation" },
       { src: "assets/checker-spatial-c.png", label: "Current Weave", meta: "Round 03 · Fiber-and-cane sculpture" },
-      { src: "assets/checker-spatial-a-v2.png", label: "River Skin — Wraparound", meta: "Revision 01 · Both sides of headboard" }
+      { src: "assets/checker-spatial-a-v2.png", label: "River Skin — Wraparound", meta: "Revision 01 · Both sides of headboard" },
+      { src: "assets/checker-nola-beadwork.png", label: "Plume & Eye", meta: "Louisiana Round · Hand-beaded textile" },
+      { src: "assets/checker-nola-beadwork-window.png", label: "Plume & Eye — Window Study", meta: "Louisiana Round · Linen Roman shade" },
+      { src: "assets/checker-nola-beadwork-bahama.png", label: "Plume & Eye — Bahama Shade", meta: "Window study · Exterior tropical shutter" },
+      { src: "assets/checker-nola-beadwork-cane.png", label: "Plume & Eye — Cane Shade", meta: "Window study · Woven natural cane" },
+      { src: "assets/whereyart-callaloo-c105.png", label: "Callaloo — Andy Levin", meta: "Where Y’Art Works · 30 × 41 in print", sourceUrl: "https://whereyartworks.com/shop/andy-levin-callaloo/1632" }
     ],
     originals: ["7712","7713","7714","7715","7716"]
   },
-  { id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with the bed deliberately centered across the window. The console wall can carry either one immersive work or a collected grouping.", images: { a: "assets/olive-a.jpg", b: "assets/olive-b.jpg", c: "assets/olive-c.jpg" }, originals: ["7719","7720","7721","7722","7723","7724"] },
-  { id: "teal", number: "Room 03", name: "C112", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.", images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" }, originals: ["7717","7718"] },
-  { id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.", images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" }, originals: ["7725","7726"] },
-  { id: "peacock", number: "Room 05", name: "C215", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.", images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" }, originals: ["7739","7740"] },
-  { id: "ivory", number: "Room 06", name: "C217", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] },
+  {
+    id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with a king bed centered across the window, a solid upholstered headboard, and no console table. The open side wall carries the art while the window treatment becomes part of the composition.",
+    images: { a: "assets/olive-a-king.png", b: "assets/olive-b-king.png", c: "assets/olive-c-king.png" },
+    allRenderings: [
+      { src: "assets/olive-prelayout-marsh.png", label: "Louisiana Marsh — Pre-layout Study", meta: "Early rendering · Before bed revision" },
+      { src: "assets/olive-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Atmospheric landscape" },
+      { src: "assets/olive-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Textile geometry" },
+      { src: "assets/olive-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
+      { src: "assets/olive-working-river.png", label: "Working River", meta: "Louisiana Round · Oil and wax" },
+      { src: "assets/olive-working-river-window.png", label: "Working River — Window Study", meta: "Revision 01 · Roman shade, spindle headboard" },
+      { src: "assets/olive-working-river-bahama.png", label: "Working River — Bahama Shade", meta: "Revision 01 · Tropical shutter, spindle headboard" },
+      { src: "assets/olive-working-river-cane.png", label: "Working River — Cane Shade", meta: "Revision 01 · Woven cane, spindle headboard" },
+      { src: "assets/olive-a-solid.png", label: "Poetic Louisiana — Solid Headboard", meta: "Revision 02 · Queen-bed study" },
+      { src: "assets/olive-b-solid.png", label: "Graphic Modernist — Solid Headboard", meta: "Revision 02 · Queen-bed study" },
+      { src: "assets/olive-c-solid.png", label: "Collected Archive — Solid Headboard", meta: "Revision 02 · Queen-bed study" },
+      { src: "assets/olive-working-river-solid.png", label: "Working River — Solid Headboard", meta: "Revision 02 · Queen-bed study" },
+      { src: "assets/olive-working-river-window-solid.png", label: "Working River — Roman Shade", meta: "Revision 02 · Solid headboard" },
+      { src: "assets/olive-working-river-bahama-solid.png", label: "Working River — Bahama Shade", meta: "Revision 02 · Solid headboard" },
+      { src: "assets/olive-working-river-cane-solid.png", label: "Working River — Cane Shade", meta: "Revision 02 · Solid headboard" },
+      { src: "assets/olive-a-king.png", label: "Poetic Louisiana — King Layout", meta: "Current plan · Solid headboard, no console" },
+      { src: "assets/olive-b-king.png", label: "Graphic Modernist — King Layout", meta: "Current plan · Solid headboard, no console" },
+      { src: "assets/olive-c-king.png", label: "Collected Archive — King Layout", meta: "Current plan · Solid headboard, no console" },
+      { src: "assets/olive-working-river-king.png", label: "Working River — King Layout", meta: "Current plan · Solid headboard, no console" },
+      { src: "assets/olive-working-river-roman-king.png", label: "Working River — Roman Shade", meta: "Current plan · King, no console" },
+      { src: "assets/olive-working-river-bahama-king.png", label: "Working River — Bahama Shade", meta: "Current plan · King, no console" },
+      { src: "assets/olive-working-river-cane-king.png", label: "Working River — Cane Shade", meta: "Current plan · King, no console" },
+      { src: "assets/whereyart-manchac-c204.png", label: "Manchac Panoramic — Alan Zakem", meta: "Where Y’Art Works · 48 × 16 in metallic canvas", sourceUrl: "https://whereyartworks.com/shop/alan-zakem-manchac-panoramic/4951" }
+    ],
+    originals: ["7719","7720","7721","7722","7723","7724"]
+  },
+  {
+    id: "teal", number: "Room 03", name: "C112", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.",
+    images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" },
+    allRenderings: [
+      { src: "assets/teal-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
+      { src: "assets/teal-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Geometric painting" },
+      { src: "assets/teal-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed pair" },
+      { src: "assets/teal-crescent-brass.png", label: "Crescent Grid", meta: "Louisiana Round · Cast-brass relief" },
+      { src: "assets/whereyart-river8-c112.png", label: "River #8 — Connor McManus", meta: "Where Y’Art Works · 12 × 24 in acrylic on canvas", sourceUrl: "https://whereyartworks.com/shop/connor-mcmanus-river-8/8844" }
+    ],
+    originals: ["7717","7718"]
+  },
+  {
+    id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
+    images: { a: "assets/terra-a.jpg", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" },
+    allRenderings: [
+      { src: "assets/terra-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical diptych" },
+      { src: "assets/terra-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Geometric painting" },
+      { src: "assets/terra-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
+      { src: "assets/terra-cypress-relief.png", label: "Cypress Knees & Heron", meta: "Louisiana Round · Carved sinker cypress" },
+      { src: "assets/whereyart-magnolias-terra.png", label: "French Quarter Magnolias — Alex Demyan", meta: "Where Y’Art Works · 24 × 36 in canvas option", sourceUrl: "https://whereyartworks.com/shop/alex-demyan-french-quarter-magnolias/1714" }
+    ],
+    originals: ["7725","7726"]
+  },
+  {
+    id: "peacock", number: "Room 05", name: "C215", description: "The blue headboard and dark botanical niche are already expressive. Art above the bed should bridge the cool architecture and coral textiles.",
+    images: { a: "assets/peacock-a.jpg", b: "assets/peacock-b.jpg", c: "assets/peacock-c.jpg" },
+    allRenderings: [
+      { src: "assets/peacock-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Magnolia diptych" },
+      { src: "assets/peacock-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Abstract painting" },
+      { src: "assets/peacock-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
+      { src: "assets/peacock-shotgun-quilt.png", label: "Shotgun Rhythm", meta: "Louisiana Round · Hand-quilted appliqué" },
+      { src: "assets/whereyart-marching-band-c215.png", label: "Marching Band — Jason Van Pelt", meta: "Where Y’Art Works · Two 16.5 × 22 in prints", sourceUrl: "https://whereyartworks.com/shop/jason-van-pelt-marching-band-the-drummer/11146" }
+    ],
+    originals: ["7739","7740"]
+  },
+  {
+    id: "ivory", number: "Room 06", name: "C217", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.",
+    images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" },
+    allRenderings: [
+      { src: "assets/ivory-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Wetland diptych" },
+      { src: "assets/ivory-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Textile geometry" },
+      { src: "assets/ivory-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
+      { src: "assets/ivory-cyanotype-banners.png", label: "Garden Exposures", meta: "Louisiana Round · Linen cyanotype banners" },
+      { src: "assets/whereyart-tree-of-life-c217.png", label: "Tree of Life (37) — Caroline Youngblood", meta: "Where Y’Art Works · Two 22 × 30 in panels", sourceUrl: "https://whereyartworks.com/shop/caroline-youngblood-tree-of-life-37/9103" }
+    ],
+    originals: ["7741","7742","7743"]
+  },
   { id: "teal-built-in", number: "Room 07", name: "C103", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
   { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true },
   { id: "terra-b", number: "Room 09", name: "C212", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7727","7728"], sourceOnly: true },
@@ -284,6 +363,8 @@ function updateLightbox() {
   $("lightbox-image").alt = item.label;
   $("lightbox-label").textContent = item.label;
   $("lightbox-position").textContent = `${lightboxIndex + 1} / ${lightboxItems.length} · ${item.meta}`;
+  $("lightbox-source").hidden = !item.sourceUrl;
+  $("lightbox-source").href = item.sourceUrl || "#";
 }
 
 function openLightbox(index) {
