@@ -83,11 +83,11 @@ const rooms = [
   },
   {
     id: "teal", number: "Room 03", name: "C112", description: "A monochromatic teal jewel box. The broad wall above the solid headboard is the primary art plane; the narrow wall beside the bath stays empty so the doorway and saturated envelope can breathe.",
-    images: { a: "assets/teal-reverse-painted-glass.png", b: "assets/teal-ceramic-floodline.png", c: "assets/teal-cane-current.png" },
+    images: { a: "assets/teal-night-procession-beadwork.png", b: "assets/teal-erato-impressions.png", c: "assets/teal-second-line-score.png" },
     options: {
-      a: { name: "Night Water Glass", short: "Reverse-painted antique glass", description: "Translucent pigment on subtly wavy salvaged glass turns reflected river light into a dark, luminous object. The teal wall glows faintly through it, making the work feel embedded in the room rather than framed on top of it.", palette: ["#173f45", "#2e302c", "#9a6428", "#d4b77c"] },
-      b: { name: "Ceramic Floodline", short: "Hand-built clay constellation", description: "Eleven individually mounted local-clay forms create a loose current above the bed. Air between the pieces keeps the composition light while ivory, terracotta, charcoal, and bronze bring warmth to the teal envelope.", palette: ["#173f45", "#d5c4aa", "#9a6847", "#4b4037"] },
-      c: { name: "Cane Current", short: "Open river-cane weave", description: "An airy hand-woven sculpture of river cane, palmetto fiber, indigo cord, and oxidized copper leaves much of the teal wall visible. It is tactile and locally rooted, though intentionally the most literal material reference.", palette: ["#173f45", "#c6a575", "#252f3a", "#8b674a"] }
+      a: { name: "Night Procession", short: "Artist-authored beadwork commission", description: "An original abstract beadwork panel turns procession, feathers, river bends, drum pulses, and night flowers into a dense jewel-like field. This direction should only be developed as a direct commission with a New Orleans Black Masking Indian artist, preserving authorship and cultural specificity.", palette: ["#132e38", "#c08a36", "#b35f45", "#d8d0be"] },
+      b: { name: "Erato Impressions", short: "Casts from the property itself", description: "Seven imperfect plaster casts taken from the hotel's own molding, ironwork, tile, fanlight, and hardware become a site-specific archaeological frieze. The work could exist nowhere else because the building supplies its source material.", palette: ["#173f45", "#d2c5b3", "#a4694f", "#4c4a45"] },
+      c: { name: "Second-Line Score", short: "Rhythm translated into brass", description: "Hand-hammered brass and blackened-bronze marks translate the accents and rests of a local second-line drum pattern into a quiet sculptural score. It references New Orleans through rhythm rather than illustration.", palette: ["#173f45", "#a16a2d", "#3d3028", "#d2b37c"] }
     },
     allRenderings: [
       { src: "assets/teal-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
@@ -98,7 +98,10 @@ const rooms = [
       { src: "assets/teal-cypress-current-above-bed.png", label: "Cypress Current — Above Bed", meta: "Placement correction · Carved sinker-cypress relief · Side wall left empty" },
       { src: "assets/teal-reverse-painted-glass.png", label: "Night Water Glass", meta: "Above-bed study · Reverse-painted salvaged window glass" },
       { src: "assets/teal-ceramic-floodline.png", label: "Ceramic Floodline", meta: "Above-bed study · Eleven hand-built local-clay forms" },
-      { src: "assets/teal-cane-current.png", label: "Cane Current", meta: "Above-bed study · River cane, palmetto, indigo + copper" }
+      { src: "assets/teal-cane-current.png", label: "Cane Current", meta: "Above-bed study · River cane, palmetto, indigo + copper" },
+      { src: "assets/teal-night-procession-beadwork.png", label: "Night Procession", meta: "New Orleans custom study · Direct artist-collaboration concept" },
+      { src: "assets/teal-erato-impressions.png", label: "Erato Impressions", meta: "New Orleans custom study · Plaster casts sourced from the property" },
+      { src: "assets/teal-second-line-score.png", label: "Second-Line Score", meta: "New Orleans custom study · Patinated-brass rhythm installation" }
     ],
     originals: ["7717","7718"]
   },
