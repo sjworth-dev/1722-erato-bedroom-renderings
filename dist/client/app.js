@@ -107,11 +107,11 @@ const rooms = [
   },
   {
     id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
-    images: { a: "assets/terra-sgraffito-archive.png", b: "assets/terra-river-memory-mural.png", c: "assets/terra-courtyard-afterimage.png" },
+    images: { a: "assets/terra-palmetto-storm.png", b: "assets/terra-storm-archive.png", c: "assets/terra-river-light.png" },
     options: {
-      a: { name: "Sgraffito Archive", short: "Incised directly into plaster", description: "A quiet field of hand-troweled lime plaster carries scratched fragments of ironwork, fanlight geometry, street traces, and an oxbow curve. Tonal relief and sparse pigment make it feel architectural rather than applied.", palette: ["#e6dac6", "#b56e50", "#8e8274", "#c6a57b"] },
-      b: { name: "River Memory", short: "Full-wall mineral mural", description: "Translucent limewash veils, tide lines, and soft drips turn the bed wall into an atmospheric study of sediment and humidity. The mural remains intentionally quieter than the adjacent botanical wallpaper.", palette: ["#e7ddcb", "#a5aaa4", "#b89370", "#c67352"] },
-      c: { name: "Courtyard Afterimage", short: "Ephemeral light-and-shadow art", description: "A concealed brass light rail casts diffuse fragments of courtyard foliage, fanlight geometry, and ironwork across the wall. The installation changes the room through atmosphere rather than another permanent surface.", palette: ["#eee3d0", "#c79b64", "#8d8173", "#b8684b"] }
+      a: { name: "Palmetto Storm", short: "Wall-to-ceiling sculptural vortex", description: "A museum-scale current of river cane, palmetto fiber, blackened copper, indigo knots, and cast-glass rain erupts from the bed wall and curls onto the ceiling. Its open structure creates as much art through shadow as through material.", palette: ["#c39d6a", "#372f28", "#182b3d", "#d8d2c6"] },
+      b: { name: "Storm Archive", short: "Immersive wall-and-ceiling mural", description: "A contemporary mural of indigo current, storm cloud, rust sediment, mica, and erased cartography crosses the crown and consumes the ceiling. The room becomes the artwork rather than containing one.", palette: ["#191b20", "#b2603f", "#d2cbc0", "#9a7d55"] },
+      c: { name: "River Light", short: "Projection-mapped evening mode", description: "Concealed projectors animate walls, ceiling, millwork, and selected wallpaper with luminous water, rainfall radar, survey lines, and dissolving street grids. It is a changing nocturnal environment rather than a static installation.", palette: ["#132d43", "#0b76a9", "#d2b37c", "#aa5e4d"] }
     },
     allRenderings: [
       { src: "assets/terra-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical diptych" },
@@ -131,7 +131,10 @@ const rooms = [
       { src: "assets/terra-found-object-ledge.png", label: "River Ledge", meta: "Found-object study · Sinker-cypress ledge + two secured objects" },
       { src: "assets/terra-river-memory-mural.png", label: "River Memory", meta: "Wall-integrated study · Full-bed-wall mineral limewash mural" },
       { src: "assets/terra-sgraffito-archive.png", label: "Sgraffito Archive", meta: "Wall-integrated study · Incised plaster + earth pigment" },
-      { src: "assets/terra-courtyard-afterimage.png", label: "Courtyard Afterimage", meta: "Light-art study · Concealed rail + diffuse projected shadow" }
+      { src: "assets/terra-courtyard-afterimage.png", label: "Courtyard Afterimage", meta: "Light-art study · Concealed rail + diffuse projected shadow" },
+      { src: "assets/terra-palmetto-storm.png", label: "Palmetto Storm", meta: "Boundary study · Wall-to-ceiling cane, fiber, copper + glass sculpture" },
+      { src: "assets/terra-storm-archive.png", label: "Storm Archive", meta: "Boundary study · Immersive bed-wall + ceiling mural" },
+      { src: "assets/terra-river-light.png", label: "River Light", meta: "Boundary study · Projection-mapped evening installation" }
     ],
     originals: ["7725","7726"]
   },
