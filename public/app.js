@@ -107,11 +107,11 @@ const rooms = [
   },
   {
     id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
-    images: { a: "assets/terra-found-oil-tintype.png", b: "assets/terra-found-iron-fragment.png", c: "assets/terra-found-object-ledge.png" },
+    images: { a: "assets/terra-sgraffito-archive.png", b: "assets/terra-river-memory-mural.png", c: "assets/terra-courtyard-afterimage.png" },
     options: {
-      a: { name: "Oil & Tintype", short: "Two pieces found separately", description: "A tiny wetland oil and a hand-tinted antique photograph share a mood without behaving like a coordinated set. The mixed frames and uneven scale make the pairing feel genuinely accumulated.", palette: ["#34352d", "#725a43", "#a98b61", "#ded2bc"] },
-      b: { name: "Iron Relic", short: "Salvaged architectural fragment", description: "A small cast-iron architectural fragment floats directly on the wall like a museum object. Its shadow, patina, and irregular silhouette bring New Orleans material history into the room without adding another pattern.", palette: ["#373028", "#6b6254", "#a16a50", "#e6ddcf"] },
-      c: { name: "River Ledge", short: "Tiny oil and ceramic object", description: "A slim sinker-cypress ledge holds one miniature river study and one hand-built ceramic fragment. The objects feel acquired rather than matched, though this is intentionally the most styled of the three options.", palette: ["#4b382d", "#626153", "#c8bcaa", "#e8dfd0"] }
+      a: { name: "Sgraffito Archive", short: "Incised directly into plaster", description: "A quiet field of hand-troweled lime plaster carries scratched fragments of ironwork, fanlight geometry, street traces, and an oxbow curve. Tonal relief and sparse pigment make it feel architectural rather than applied.", palette: ["#e6dac6", "#b56e50", "#8e8274", "#c6a57b"] },
+      b: { name: "River Memory", short: "Full-wall mineral mural", description: "Translucent limewash veils, tide lines, and soft drips turn the bed wall into an atmospheric study of sediment and humidity. The mural remains intentionally quieter than the adjacent botanical wallpaper.", palette: ["#e7ddcb", "#a5aaa4", "#b89370", "#c67352"] },
+      c: { name: "Courtyard Afterimage", short: "Ephemeral light-and-shadow art", description: "A concealed brass light rail casts diffuse fragments of courtyard foliage, fanlight geometry, and ironwork across the wall. The installation changes the room through atmosphere rather than another permanent surface.", palette: ["#eee3d0", "#c79b64", "#8d8173", "#b8684b"] }
     },
     allRenderings: [
       { src: "assets/terra-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical diptych" },
@@ -128,7 +128,10 @@ const rooms = [
       { src: "assets/terra-two-small-nocturnes.png", label: "Two Small Nocturnes", meta: "Quiet edit · Unmatched original oils · 8 × 10 + 10 × 8 in" },
       { src: "assets/terra-found-oil-tintype.png", label: "Oil & Tintype", meta: "Found-object study · Wetland oil + hand-tinted photograph" },
       { src: "assets/terra-found-iron-fragment.png", label: "Iron Relic", meta: "Found-object study · Salvaged cast-iron architectural fragment" },
-      { src: "assets/terra-found-object-ledge.png", label: "River Ledge", meta: "Found-object study · Sinker-cypress ledge + two secured objects" }
+      { src: "assets/terra-found-object-ledge.png", label: "River Ledge", meta: "Found-object study · Sinker-cypress ledge + two secured objects" },
+      { src: "assets/terra-river-memory-mural.png", label: "River Memory", meta: "Wall-integrated study · Full-bed-wall mineral limewash mural" },
+      { src: "assets/terra-sgraffito-archive.png", label: "Sgraffito Archive", meta: "Wall-integrated study · Incised plaster + earth pigment" },
+      { src: "assets/terra-courtyard-afterimage.png", label: "Courtyard Afterimage", meta: "Light-art study · Concealed rail + diffuse projected shadow" }
     ],
     originals: ["7725","7726"]
   },
