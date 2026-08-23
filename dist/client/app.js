@@ -25,9 +25,9 @@ const rooms = [
     number: "Room 01",
     name: "C105",
     description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. This spatial-art study treats the daybed wall as architecture rather than a place for conventionally framed work.",
-    images: { a: "assets/checker-spatial-a.png", b: "assets/checker-spatial-b.png", c: "assets/checker-spatial-c.png" },
+    images: { a: "assets/checker-spatial-a-v2.png", b: "assets/checker-spatial-b.png", c: "assets/checker-spatial-c.png" },
     options: {
-      a: { name: "River Skin", short: "Wall-integrated limewash fresco", description: "Translucent mineral washes, tide lines, and soft drips spread directly across the plaster. The work has no object edge: it turns the wall itself into an atmospheric study of river sediment and summer rain.", palette: ["#ddd5c6", "#92999a", "#5d676b", "#a38b72"] },
+      a: { name: "River Skin", short: "Wraparound limewash fresco", description: "Translucent mineral washes, tide lines, and soft drips spread directly across the plaster on both sides of the wallpaper headboard, creating one continuous atmospheric study of river sediment and summer rain.", palette: ["#ddd5c6", "#92999a", "#5d676b", "#a38b72"] },
       b: { name: "Water Light", short: "Cast-glass light installation", description: "An organic constellation of hand-cast glass lenses and subtle concealed light scatters watery reflections across the room. Individual pieces suggest current and salvaged material without forming a picture.", palette: ["#e5dfd0", "#8a9b91", "#56666a", "#b69054"] },
       c: { name: "Current Weave", short: "Fiber-and-cane soft sculpture", description: "Indigo cord, palmetto fiber, river cane, and oxidized copper move diagonally across the wall and corner as a monumental open weave—part net, part current, and fully spatial.", palette: ["#152b40", "#a68958", "#c9b895", "#584b3d"] }
     },
@@ -40,7 +40,8 @@ const rooms = [
       { src: "assets/checker-local-c.png", label: "Sediment Relief", meta: "Round 02 · Plaster and brass" },
       { src: "assets/checker-spatial-a.png", label: "River Skin", meta: "Round 03 · Wall-integrated fresco" },
       { src: "assets/checker-spatial-b.png", label: "Water Light", meta: "Round 03 · Cast-glass installation" },
-      { src: "assets/checker-spatial-c.png", label: "Current Weave", meta: "Round 03 · Fiber-and-cane sculpture" }
+      { src: "assets/checker-spatial-c.png", label: "Current Weave", meta: "Round 03 · Fiber-and-cane sculpture" },
+      { src: "assets/checker-spatial-a-v2.png", label: "River Skin — Wraparound", meta: "Revision 01 · Both sides of headboard" }
     ],
     originals: ["7712","7713","7714","7715","7716"]
   },
@@ -51,9 +52,9 @@ const rooms = [
   { id: "ivory", number: "Room 06", name: "C217", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.", images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" }, originals: ["7741","7742","7743"] },
   { id: "teal-built-in", number: "Room 07", name: "C103", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
   { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true },
-  { id: "terra-b", number: "Room 09", name: "Terracotta Botanical B", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7727","7728"], sourceOnly: true },
+  { id: "terra-b", number: "Room 09", name: "C212", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7727","7728"], sourceOnly: true },
   { id: "terra-c", number: "Room 10", name: "Terracotta Botanical C", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7732","7733","7734"], sourceOnly: true },
-  { id: "terra-d", number: "Room 11", name: "Terracotta Botanical D", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7735","7736","7737"], sourceOnly: true }
+  { id: "terra-d", number: "Room 11", name: "C214", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7735","7736","7737"], sourceOnly: true }
 ];
 
 let activeRoom = rooms[0].id;
@@ -68,14 +69,14 @@ const $ = (id) => document.getElementById(id);
 
 function roomState(id) {
   const current = state[id] || {};
-  const resetForSpatialStudy = id === "checker" && current.conceptRevision !== "spatial-v2";
+  const resetForSpatialStudy = id === "checker" && current.conceptRevision !== "spatial-v3";
   state[id] = {
     shortlist: resetForSpatialStudy ? [] : (Array.isArray(current.shortlist) ? current.shortlist : (current.favorite ? [current.direction || "a"] : [])),
     note: current.note || "",
     direction: resetForSpatialStudy ? "a" : (current.direction || "a"),
     frame: resetForSpatialStudy ? "Integrated / frameless" : (current.frame || "Dark walnut"),
     scale: current.scale || "Balanced",
-    conceptRevision: id === "checker" ? "spatial-v2" : current.conceptRevision
+    conceptRevision: id === "checker" ? "spatial-v3" : current.conceptRevision
   };
   return state[id];
 }
