@@ -95,9 +95,11 @@ const rooms = [
   },
   {
     id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
-    images: { a: "assets/terra-two-small-nocturnes.png", b: "assets/terra-b.jpg", c: "assets/terra-c.jpg" },
+    images: { a: "assets/terra-found-oil-tintype.png", b: "assets/terra-found-iron-fragment.png", c: "assets/terra-found-object-ledge.png" },
     options: {
-      a: { name: "Two Small Nocturnes", short: "A collected pair of tiny oils", description: "Two related-but-unmatched Louisiana wetland studies create a small, irregular composition with just enough visual rhythm. Their modest combined scale quiets the bed wall while allowing the layered wallpaper niche to remain the room's primary gesture.", palette: ["#2f3028", "#705643", "#b66b4c", "#e6dac6"] }
+      a: { name: "Oil & Tintype", short: "Two pieces found separately", description: "A tiny wetland oil and a hand-tinted antique photograph share a mood without behaving like a coordinated set. The mixed frames and uneven scale make the pairing feel genuinely accumulated.", palette: ["#34352d", "#725a43", "#a98b61", "#ded2bc"] },
+      b: { name: "Iron Relic", short: "Salvaged architectural fragment", description: "A small cast-iron architectural fragment floats directly on the wall like a museum object. Its shadow, patina, and irregular silhouette bring New Orleans material history into the room without adding another pattern.", palette: ["#373028", "#6b6254", "#a16a50", "#e6ddcf"] },
+      c: { name: "River Ledge", short: "Tiny oil and ceramic object", description: "A slim sinker-cypress ledge holds one miniature river study and one hand-built ceramic fragment. The objects feel acquired rather than matched, though this is intentionally the most styled of the three options.", palette: ["#4b382d", "#626153", "#c8bcaa", "#e8dfd0"] }
     },
     allRenderings: [
       { src: "assets/terra-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical diptych" },
@@ -111,7 +113,10 @@ const rooms = [
       { src: "assets/terra-sediment-wash-limewash.png", label: "Sediment Wash", meta: "Quiet edit · Integrated tonal limewash" },
       { src: "assets/terra-small-nocturne.png", label: "Small Nocturne", meta: "Quiet edit · Original oil on linen · 16 × 20 in" },
       { src: "assets/terra-small-nocturne-9x12.png", label: "Tiny Nocturne", meta: "Quiet edit · Original oil on linen · 9 × 12 in" },
-      { src: "assets/terra-two-small-nocturnes.png", label: "Two Small Nocturnes", meta: "Quiet edit · Unmatched original oils · 8 × 10 + 10 × 8 in" }
+      { src: "assets/terra-two-small-nocturnes.png", label: "Two Small Nocturnes", meta: "Quiet edit · Unmatched original oils · 8 × 10 + 10 × 8 in" },
+      { src: "assets/terra-found-oil-tintype.png", label: "Oil & Tintype", meta: "Found-object study · Wetland oil + hand-tinted photograph" },
+      { src: "assets/terra-found-iron-fragment.png", label: "Iron Relic", meta: "Found-object study · Salvaged cast-iron architectural fragment" },
+      { src: "assets/terra-found-object-ledge.png", label: "River Ledge", meta: "Found-object study · Sinker-cypress ledge + two secured objects" }
     ],
     originals: ["7725","7726"]
   },
