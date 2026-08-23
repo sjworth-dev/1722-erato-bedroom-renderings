@@ -25,13 +25,14 @@ const rooms = [
     number: "Room 01",
     name: "C105",
     description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. This spatial-art study treats the daybed wall as architecture rather than a place for conventionally framed work.",
-    images: { a: "assets/checker-bayou-chorus-hybrid.png", b: "assets/checker-bayou-chorus-cutouts.png", c: "assets/checker-spatial-b.png" },
+    images: { a: "assets/checker-second-line-shadow-mixed.png", b: "assets/checker-bayou-chorus-hybrid.png", c: "assets/checker-bayou-chorus-cutouts.png" },
     options: {
-      a: { name: "Bayou Chorus — Three Pieces", short: "Three cutouts + hand-painted mural", description: "One Louisiana green tree frog and two dragonfly cutouts provide the dimensional highlights. Painted irises, marsh grass, water lines, and firefly dots carry the composition around the corner at substantially lower fabrication cost.", palette: ["#61952d", "#1d75a2", "#6551a2", "#df9d2e"] },
-      b: { name: "Bayou Chorus", short: "Full Zac Maras cutout commission study", description: "A large Louisiana green tree frog, smaller jumping frogs, iris petals, dragonflies, cypress seeds, and firefly points move across the daybed wall and turn the corner. This is a placement and subject brief for a direct Zac Maras commission; the final composition and visual language should remain entirely artist-authored.", palette: ["#61952d", "#1d75a2", "#6551a2", "#df9d2e"] },
-      c: { name: "Water Light", short: "Cast-glass light installation", description: "An organic constellation of hand-cast glass lenses and subtle concealed light scatters watery reflections across the room. Individual pieces suggest current and salvaged material without forming a picture.", palette: ["#e5dfd0", "#8a9b91", "#56666a", "#b69054"] }
+      a: { name: "Second-Line Shadow", short: "One plywood figure + tonal mural", description: "A single dimensional parasol figure leads a barely-there procession painted directly on the wall. It borrows the mixed-media logic of New Orleans hospitality art programs while keeping the toile and checkerboard pattern visually dominant.", palette: ["#173f45", "#b76550", "#b49358", "#d9d0bd"] },
+      b: { name: "Bayou Chorus — Three Pieces", short: "Three cutouts + hand-painted mural", description: "One Louisiana green tree frog and two dragonfly cutouts provide the dimensional highlights. Painted irises, marsh grass, water lines, and firefly dots carry the composition around the corner at substantially lower fabrication cost.", palette: ["#61952d", "#1d75a2", "#6551a2", "#df9d2e"] },
+      c: { name: "Bayou Chorus", short: "Full cutout commission study", description: "A large Louisiana green tree frog, smaller jumping frogs, iris petals, dragonflies, cypress seeds, and firefly points move across the daybed wall and turn the corner. This is a placement and subject brief for a direct local-artist commission.", palette: ["#61952d", "#1d75a2", "#6551a2", "#df9d2e"] }
     },
     allRenderings: [
+      { src: "assets/checker-second-line-shadow-mixed.png", label: "Second-Line Shadow", meta: "CastleDay / The Syd precedent study · One cutout + tonal mural", sourceUrl: "https://www.thesyd.com/" },
       { src: "assets/checker-bayou-chorus-hybrid.png", label: "Bayou Chorus — Three Pieces", meta: "Value study · Three cutouts + hand-painted mural" },
       { src: "assets/checker-bayou-chorus-cutouts.png", label: "Bayou Chorus", meta: "New Orleans cutout study · Zac Maras commission brief", sourceUrl: "https://www.staymarais.com/artist-spotlight-zac-maras" },
       { src: "assets/checker-early-bayou.png", label: "Blue Bayou Botanical — Alternate", meta: "Early study · Revised wallpaper wall" },
@@ -55,13 +56,14 @@ const rooms = [
   },
   {
     id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with a king bed centered across the window, a solid upholstered headboard, and no console table. The generous open wall is the collection's clearest opportunity for one museum-scale, site-specific art focal point.",
-    images: { a: "assets/olive-roseate-waterline-hybrid.png", b: "assets/olive-roseate-flight-cutouts.png", c: "assets/olive-garden-after-dark.png" },
+    images: { a: "assets/olive-river-rail-sky-mixed.png", b: "assets/olive-roseate-waterline-hybrid.png", c: "assets/olive-roseate-flight-cutouts.png" },
     options: {
-      a: { name: "Roseate Waterline", short: "Three cutouts + hand-painted mural", description: "One roseate spoonbill, one Louisiana iris, and one cypress-seed cluster supply the dimensional color. A painted waterline, marsh strokes, and coral sunset arc create the room-scale composition with only three fabricated pieces.", palette: ["#e76472", "#7753a1", "#147d9b", "#74933a"] },
-      b: { name: "Roseate Flight", short: "Full Zac Maras cutout commission study", description: "Three oversized roseate spoonbills, Louisiana iris forms, cypress seeds, and rippling water shapes sweep across the wall as individually painted dimensional cutouts. This is a placement and subject brief for a direct Zac Maras commission; the final composition and visual language should remain entirely artist-authored.", palette: ["#e76472", "#ef8ba0", "#146f9b", "#6e8b36"] },
-      c: { name: "Garden After Dark", short: "Artist-authored bead-and-fiber relief", description: "A museum-scale field of glass beadwork, stitched textile, radiating feather rhythms, night flowers, river bends, and procession pulses concentrates New Orleans color into one extraordinary object. It should only move forward as a direct commission with a New Orleans Black Masking Indian artist, with full authorship and cultural specificity.", palette: ["#672b75", "#087a86", "#d34570", "#d99a28"] }
+      a: { name: "River / Rail / Sky", short: "Oil panel + mural + found flood marker", description: "A compact working-river painting becomes the source for a quieter room-scale mural: its wake, industrial horizon and bridge line continue directly across the wall. One salvaged brass flood marker completes the installation.", palette: ["#536d78", "#b47a45", "#b49358", "#d9d0bd"] },
+      b: { name: "Roseate Waterline", short: "Three cutouts + hand-painted mural", description: "One roseate spoonbill, one Louisiana iris, and one cypress-seed cluster supply the dimensional color. A painted waterline, marsh strokes, and coral sunset arc create the room-scale composition with only three fabricated pieces.", palette: ["#e76472", "#7753a1", "#147d9b", "#74933a"] },
+      c: { name: "Roseate Flight", short: "Full cutout commission study", description: "Three oversized roseate spoonbills, Louisiana iris forms, cypress seeds, and rippling water shapes sweep across the wall as individually painted dimensional cutouts. This is a placement and subject brief for direct local-artist collaboration.", palette: ["#e76472", "#ef8ba0", "#146f9b", "#6e8b36"] }
     },
     allRenderings: [
+      { src: "assets/olive-river-rail-sky-mixed.png", label: "River / Rail / Sky", meta: "CastleDay precedent study · Oil panel + extended mural + found brass", sourceUrl: "https://www.castledayretreats.com/art-program" },
       { src: "assets/olive-roseate-waterline-hybrid.png", label: "Roseate Waterline", meta: "Value study · Three cutouts + hand-painted mural" },
       { src: "assets/olive-roseate-flight-cutouts.png", label: "Roseate Flight", meta: "New Orleans color study · Zac Maras cutout commission brief", sourceUrl: "https://www.staymarais.com/artist-spotlight-zac-maras" },
       { src: "assets/olive-wet-season.png", label: "Wet Season", meta: "Color study · Reverse-painted salvaged window glass" },
@@ -100,13 +102,14 @@ const rooms = [
   },
   {
     id: "teal", number: "Room 03", name: "C112", description: "A monochromatic teal jewel box. The broad wall above the solid headboard is the primary art plane; the narrow wall beside the bath stays empty so the doorway and saturated envelope can breathe.",
-    images: { a: "assets/teal-heron-moonline-hybrid.png", b: "assets/teal-heron-blue-hour-cutouts.png", c: "assets/teal-surface-current-cutouts.png" },
+    images: { a: "assets/teal-migration-map-tufted.png", b: "assets/teal-heron-moonline-hybrid.png", c: "assets/teal-heron-blue-hour-cutouts.png" },
     options: {
-      a: { name: "Heron Moonline", short: "Three cutouts + hand-painted mural", description: "One flying heron and two Louisiana iris cutouts give the wall depth, while a painted crescent, water currents, and sunset marks complete the composition. The result keeps the strongest silhouette with only three fabricated pieces.", palette: ["#285b93", "#7353a5", "#d9a22a", "#d06750"] },
-      b: { name: "Heron at Blue Hour", short: "Full Zac Maras cutout commission study", description: "One great blue heron in low flight, Louisiana irises, cypress seeds, moons, and water ripples create a composed horizontal installation above the headboard. This is a spatial and subject brief for direct artist collaboration, with the finished visual language authored by Zac Maras.", palette: ["#285b93", "#7353a5", "#d9a22a", "#d06750"] },
-      c: { name: "Surface Current", short: "Native-fish cutout commission study", description: "Nine native Louisiana fish move through crescents and water-ripple shapes in a loose school above the bed. Individual painted cutouts bring saturated color, rhythm, and shadow while preserving the teal wall as negative space.", palette: ["#c95736", "#146b91", "#d0a231", "#7159a4"] }
+      a: { name: "Migration Map", short: "Tufted Mississippi channels + painted trace", description: "One frameless textile relief abstracts historic Mississippi meanders and a Gulf migratory path through carved wool channels. Two fine painted lines let the map escape the object and inhabit the teal wall.", palette: ["#173f45", "#b76550", "#d0a231", "#d9d0bd"] },
+      b: { name: "Heron Moonline", short: "Three cutouts + hand-painted mural", description: "One flying heron and two Louisiana iris cutouts give the wall depth, while a painted crescent, water currents, and sunset marks complete the composition. The result keeps the strongest silhouette with only three fabricated pieces.", palette: ["#285b93", "#7353a5", "#d9a22a", "#d06750"] },
+      c: { name: "Heron at Blue Hour", short: "Full cutout commission study", description: "One great blue heron in low flight, Louisiana irises, cypress seeds, moons, and water ripples create a composed horizontal installation above the headboard. This is a spatial and subject brief for direct local-artist collaboration.", palette: ["#285b93", "#7353a5", "#d9a22a", "#d06750"] }
     },
     allRenderings: [
+      { src: "assets/teal-migration-map-tufted.png", label: "Migration Map", meta: "CastleDay precedent study · Tufted textile + painted river trace", sourceUrl: "https://www.castledayretreats.com/art-program" },
       { src: "assets/teal-heron-moonline-hybrid.png", label: "Heron Moonline", meta: "Value study · Three cutouts + hand-painted mural" },
       { src: "assets/teal-heron-blue-hour-cutouts.png", label: "Heron at Blue Hour", meta: "New Orleans cutout study · Zac Maras commission brief", sourceUrl: "https://www.staymarais.com/artist-spotlight-zac-maras" },
       { src: "assets/teal-surface-current-cutouts.png", label: "Surface Current", meta: "New Orleans cutout study · Native Louisiana fish" },
@@ -127,13 +130,14 @@ const rooms = [
   },
   {
     id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
-    images: { a: "assets/terra-magnolia-moon-hybrid.png", b: "assets/terra-storm-archive.png", c: "assets/terra-river-light.png" },
+    images: { a: "assets/terra-cats-claw-april-mixed.png", b: "assets/terra-magnolia-moon-hybrid.png", c: "assets/terra-found-object-ledge.png" },
     options: {
-      a: { name: "Magnolia Moon", short: "Three cutouts + hand-painted mural", description: "One luna moth and two magnolia cutouts hover over a painted teal crescent, terracotta river bands, and gold pollen marks. The cream wall remains visible, allowing the focal point to coexist with the room's botanical wallpaper at a controlled fabrication cost.", palette: ["#325d63", "#b76550", "#d9d0bd", "#b49358"] },
-      b: { name: "Storm Archive", short: "Immersive wall-and-ceiling mural", description: "A contemporary mural of indigo current, storm cloud, rust sediment, mica, and erased cartography crosses the crown and consumes the ceiling. The room becomes the artwork rather than containing one.", palette: ["#191b20", "#b2603f", "#d2cbc0", "#9a7d55"] },
-      c: { name: "River Light", short: "Projection-mapped evening mode", description: "Concealed projectors animate walls, ceiling, millwork, and selected wallpaper with luminous water, rainfall radar, survey lines, and dissolving street grids. It is a changing nocturnal environment rather than a static installation.", palette: ["#132d43", "#0b76a9", "#d2b37c", "#aa5e4d"] }
+      a: { name: "Cat's-Claw April", short: "Cottage mural + one cascading fiber vine", description: "A spare painted cottage and ironwork elevation sits quietly over the bed while one hand-knotted chartreuse-and-jute vine overtakes its corner. The installation adds tactility without competing with the room's botanical wallpaper.", palette: ["#b76550", "#8a8241", "#b49358", "#d9d0bd"] },
+      b: { name: "Magnolia Moon", short: "Three cutouts + hand-painted mural", description: "One luna moth and two magnolia cutouts hover over a painted teal crescent, terracotta river bands, and gold pollen marks. The cream wall remains visible, allowing the focal point to coexist with the room's botanical wallpaper at a controlled fabrication cost.", palette: ["#325d63", "#b76550", "#d9d0bd", "#b49358"] },
+      c: { name: "River Ledge", short: "One slim ledge + two secured found objects", description: "A narrow sinker-cypress ledge holds one small wetland oil and one pale found river object. Its modest scale keeps the bed wall collected and calm beside the botanical niche.", palette: ["#6c5440", "#a87958", "#d8cdb8", "#6e7773"] }
     },
     allRenderings: [
+      { src: "assets/terra-cats-claw-april-mixed.png", label: "Cat's-Claw April", meta: "CastleDay precedent study · Painted cottage + hand-knotted fiber vine", sourceUrl: "https://www.castledayretreats.com/art-program" },
       { src: "assets/terra-magnolia-moon-hybrid.png", label: "Magnolia Moon", meta: "Value study · Three cutouts + hand-painted mural" },
       { src: "assets/terra-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical diptych" },
       { src: "assets/terra-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Geometric painting" },
