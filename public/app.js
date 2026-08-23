@@ -25,13 +25,14 @@ const rooms = [
     number: "Room 01",
     name: "C105",
     description: "Checkerboard floor, dark-wood platform beds, and a sculptural toile backdrop. This spatial-art study treats the daybed wall as architecture rather than a place for conventionally framed work.",
-    images: { a: "assets/checker-spatial-a-v2.png", b: "assets/checker-spatial-b.png", c: "assets/checker-spatial-c.png" },
+    images: { a: "assets/checker-bayou-chorus-cutouts.png", b: "assets/checker-spatial-b.png", c: "assets/checker-spatial-c.png" },
     options: {
-      a: { name: "River Skin", short: "Wraparound limewash fresco", description: "Translucent mineral washes, tide lines, and soft drips spread directly across the plaster on both sides of the wallpaper headboard, creating one continuous atmospheric study of river sediment and summer rain.", palette: ["#ddd5c6", "#92999a", "#5d676b", "#a38b72"] },
+      a: { name: "Bayou Chorus", short: "Zac Maras cutout commission study", description: "A large Louisiana green tree frog, smaller jumping frogs, iris petals, dragonflies, cypress seeds, and firefly points move across the daybed wall and turn the corner with only a few shapes. This is a placement and subject brief for a direct Zac Maras commission; the final composition and visual language should remain entirely artist-authored.", palette: ["#61952d", "#1d75a2", "#6551a2", "#df9d2e"] },
       b: { name: "Water Light", short: "Cast-glass light installation", description: "An organic constellation of hand-cast glass lenses and subtle concealed light scatters watery reflections across the room. Individual pieces suggest current and salvaged material without forming a picture.", palette: ["#e5dfd0", "#8a9b91", "#56666a", "#b69054"] },
       c: { name: "Current Weave", short: "Fiber-and-cane soft sculpture", description: "Indigo cord, palmetto fiber, river cane, and oxidized copper move diagonally across the wall and corner as a monumental open weave—part net, part current, and fully spatial.", palette: ["#152b40", "#a68958", "#c9b895", "#584b3d"] }
     },
     allRenderings: [
+      { src: "assets/checker-bayou-chorus-cutouts.png", label: "Bayou Chorus", meta: "New Orleans cutout study · Zac Maras commission brief", sourceUrl: "https://www.staymarais.com/artist-spotlight-zac-maras" },
       { src: "assets/checker-early-bayou.png", label: "Blue Bayou Botanical — Alternate", meta: "Early study · Revised wallpaper wall" },
       { src: "assets/checker-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
       { src: "assets/checker-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Graphic print" },
@@ -97,13 +98,15 @@ const rooms = [
   },
   {
     id: "teal", number: "Room 03", name: "C112", description: "A monochromatic teal jewel box. The broad wall above the solid headboard is the primary art plane; the narrow wall beside the bath stays empty so the doorway and saturated envelope can breathe.",
-    images: { a: "assets/teal-night-procession-beadwork.png", b: "assets/teal-erato-impressions.png", c: "assets/teal-second-line-score.png" },
+    images: { a: "assets/teal-heron-blue-hour-cutouts.png", b: "assets/teal-surface-current-cutouts.png", c: "assets/teal-night-procession-beadwork.png" },
     options: {
-      a: { name: "Night Procession", short: "Artist-authored beadwork commission", description: "An original abstract beadwork panel turns procession, feathers, river bends, drum pulses, and night flowers into a dense jewel-like field. This direction should only be developed as a direct commission with a New Orleans Black Masking Indian artist, preserving authorship and cultural specificity.", palette: ["#132e38", "#c08a36", "#b35f45", "#d8d0be"] },
-      b: { name: "Erato Impressions", short: "Casts from the property itself", description: "Seven imperfect plaster casts taken from the hotel's own molding, ironwork, tile, fanlight, and hardware become a site-specific archaeological frieze. The work could exist nowhere else because the building supplies its source material.", palette: ["#173f45", "#d2c5b3", "#a4694f", "#4c4a45"] },
-      c: { name: "Second-Line Score", short: "Rhythm translated into brass", description: "Hand-hammered brass and blackened-bronze marks translate the accents and rests of a local second-line drum pattern into a quiet sculptural score. It references New Orleans through rhythm rather than illustration.", palette: ["#173f45", "#a16a2d", "#3d3028", "#d2b37c"] }
+      a: { name: "Heron at Blue Hour", short: "Zac Maras cutout commission study", description: "One great blue heron in low flight, Louisiana irises, cypress seeds, moons, and water ripples create a composed horizontal installation above the headboard. This is a spatial and subject brief for direct artist collaboration, with the finished visual language authored by Zac Maras.", palette: ["#285b93", "#7353a5", "#d9a22a", "#d06750"] },
+      b: { name: "Surface Current", short: "Native-fish cutout commission study", description: "Nine native Louisiana fish move through crescents and water-ripple shapes in a loose school above the bed. Individual painted cutouts bring saturated color, rhythm, and shadow while preserving the teal wall as negative space.", palette: ["#c95736", "#146b91", "#d0a231", "#7159a4"] },
+      c: { name: "Night Procession", short: "Artist-authored beadwork commission", description: "An original abstract beadwork panel turns procession, feathers, river bends, drum pulses, and night flowers into a dense jewel-like field. This direction should only be developed as a direct commission with a New Orleans Black Masking Indian artist, preserving authorship and cultural specificity.", palette: ["#132e38", "#c08a36", "#b35f45", "#d8d0be"] }
     },
     allRenderings: [
+      { src: "assets/teal-heron-blue-hour-cutouts.png", label: "Heron at Blue Hour", meta: "New Orleans cutout study · Zac Maras commission brief", sourceUrl: "https://www.staymarais.com/artist-spotlight-zac-maras" },
+      { src: "assets/teal-surface-current-cutouts.png", label: "Surface Current", meta: "New Orleans cutout study · Native Louisiana fish" },
       { src: "assets/teal-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
       { src: "assets/teal-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Geometric painting" },
       { src: "assets/teal-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed pair" },
