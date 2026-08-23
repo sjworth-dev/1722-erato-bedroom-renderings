@@ -130,6 +130,14 @@ button { color: inherit; }
 .refinement-card textarea { width: 100%; min-height: 86px; margin-top: 7px; padding: 12px; resize: vertical; border: 1px solid var(--line); border-radius: 9px; color: var(--ink); background: #fff; outline: none; }
 .refinement-card textarea:focus, .decision-fields select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(182,139,84,.13); }
 .room-archive { margin-top: 54px; padding-top: 42px; border-top: 1px solid var(--line); }
+.rendering-jump { width: 100%; margin: 0 0 24px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid rgba(96,75,56,.18); border-radius: 14px; color: var(--ink); background: linear-gradient(110deg,#f2ede4,#e7ded1); cursor: pointer; text-align: left; }
+.rendering-jump > span:first-child { display: grid; gap: 4px; }
+.rendering-jump small { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.rendering-jump strong { font: 500 18px/1.1 var(--serif); }
+.rendering-jump > span:last-child { white-space: nowrap; color: var(--plum); font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.rendering-jump b { display: inline-grid; min-width: 22px; height: 22px; place-items: center; margin: 0 2px; border-radius: 999px; color: #fff; background: var(--plum); }
+.rendering-jump i { margin-left: 5px; font-style: normal; }
+.rendering-jump:hover { border-color: rgba(96,75,56,.38); transform: translateY(-1px); }
 .archive-heading { margin-bottom: 20px; display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; }
 .archive-heading h2 { margin: 0; font: 400 clamp(30px,3vw,44px)/1 var(--serif); letter-spacing: -.035em; }
 .archive-heading > div > p:last-child { margin: 11px 0 0; color: var(--muted); font: 400 13px/1.5 var(--serif); }
@@ -207,6 +215,7 @@ footer p { margin: 0; }
   .room-description { max-width: 750px; }
 }
 @media (max-width: 760px) {
+  .rendering-jump { align-items: flex-start; flex-direction: column; }
   .topbar { height: 72px; padding: 0 16px; grid-template-columns: 1fr auto; }
   .brand-copy small, .project-progress, .top-actions .button-quiet { display: none; }
   .brand-copy strong { font-size: 17px; }

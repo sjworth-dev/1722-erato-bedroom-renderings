@@ -140,7 +140,7 @@ let activeRoom = rooms[0].id;
 let activeDirection = "a";
 let collectionDirection = "a";
 let viewMode = "focus";
-let archiveView = "originals";
+let archiveView = "renderings";
 let lightboxItems = [];
 let lightboxIndex = 0;
 const state = JSON.parse(localStorage.getItem("erato-direction-state") || "{}");
@@ -226,7 +226,7 @@ function selectRoom(id) {
   activeRoom = id;
   activeDirection = roomState(id).direction;
   viewMode = "focus";
-  archiveView = "originals";
+  archiveView = rooms.find((room) => room.id === id).sourceOnly ? "originals" : "renderings";
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -428,6 +428,8 @@ function render() {
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
   $("room-description").textContent = room.description;
+  $("rendering-jump").hidden = Boolean(room.sourceOnly);
+  $("rendering-jump-count").textContent = renderingItems(room).length;
   $("hero-image").src = roomImage(room, activeDirection);
   $("hero-image").alt = room.sourceOnly ? `${room.name} — original condition` : `${room.name} bedroom — ${choice.name} art direction`;
   $("image-option").textContent = room.sourceOnly ? "Original condition" : choice.name;
@@ -512,6 +514,11 @@ $("apply-collection").addEventListener("click", applyCollection);
 $("review-button").addEventListener("click", openDrawer);
 $("close-drawer").addEventListener("click", closeDrawer);
 $("drawer-backdrop").addEventListener("click", closeDrawer);
+$("rendering-jump").addEventListener("click", () => {
+  archiveView = "renderings";
+  renderArchive(rooms.find((room) => room.id === activeRoom));
+  $("archive-heading").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 $("view-all-originals").addEventListener("click", () => {
   archiveView = "originals";
   renderArchive(rooms.find((room) => room.id === activeRoom));

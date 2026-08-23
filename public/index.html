@@ -53,6 +53,11 @@
         <p id="room-description" class="room-description"></p>
       </section>
 
+      <button id="rendering-jump" class="rendering-jump" type="button">
+        <span><small>Complete room gallery</small><strong>Every finished study is included</strong></span>
+        <span>View all <b id="rendering-jump-count">0</b> renderings <i>↓</i></span>
+      </button>
+
       <section id="source-room-notice" class="source-room-notice" hidden>
         <span>New source room</span>
         <p>This room has been added from the original photo set. Its three art-direction renderings are the next design step.</p>
@@ -111,13 +116,13 @@
       <section class="room-archive" aria-labelledby="archive-heading">
         <div class="archive-heading">
           <div>
-            <p class="eyebrow">Room archive</p>
-            <h2 id="archive-heading">From existing condition to art direction.</h2>
+            <p class="eyebrow">Complete room gallery</p>
+            <h2 id="archive-heading">Every rendering, in one place.</h2>
             <p id="archive-description">Review every source photograph and finished rendering for this room.</p>
           </div>
           <div class="archive-tabs" id="archive-tabs" aria-label="Room archive view">
-            <button class="active" data-archive-view="originals" type="button">Original photographs <b id="original-count">0</b></button>
-            <button id="rendering-tab" data-archive-view="renderings" type="button">All renderings <b id="rendering-count">3</b></button>
+            <button data-archive-view="originals" type="button">Original photographs <b id="original-count">0</b></button>
+            <button id="rendering-tab" class="active" data-archive-view="renderings" type="button">All renderings <b id="rendering-count">3</b></button>
           </div>
         </div>
         <div id="archive-grid" class="archive-grid"></div>
@@ -160,6 +165,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <footer><p>Concept renderings for art-direction decisions. Final artwork dimensions and procurement should be verified against field measurements.</p></footer>
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>
