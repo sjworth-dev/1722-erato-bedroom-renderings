@@ -53,13 +53,19 @@ const rooms = [
   },
   {
     id: "olive", number: "Room 02", name: "C204", description: "A cocooning green room with a king bed centered across the window, a solid upholstered headboard, and no console table. The generous open wall is the collection's clearest opportunity for one museum-scale, site-specific art focal point.",
-    images: { a: "assets/olive-mississippi-cut.png", b: "assets/olive-tide-choir.png", c: "assets/olive-storm-veil.png" },
+    images: { a: "assets/olive-roseate-flight-cutouts.png", b: "assets/olive-garden-after-dark.png", c: "assets/olive-crescent-city-cloth.png" },
     options: {
-      a: { name: "Mississippi Cut", short: "Backlit sinker-cypress relief", description: "A monumental slab of Louisiana sinker cypress is hand-gouged with topographic contours and cut through by one glowing river line. The irregular silhouette, deep grain, and concealed backlight make it read as the room's defining object rather than another picture.", palette: ["#241c18", "#b78a50", "#6c7662", "#d4c3a5"] },
-      b: { name: "Tide Choir", short: "Louisiana-clay wall constellation", description: "Dozens of individually formed local-clay pieces sweep across the wall like a rising current. Bone, rose clay, indigo, moss, and restrained copper glazes create a changing field of color, texture, and shadow that is handmade but still monumental.", palette: ["#ddd1bd", "#a5664f", "#172d35", "#94723c"] },
-      c: { name: "Storm Veil", short: "Palmetto, cane, copper + glass", description: "An airy, unframed commission of split palmetto, river cane, indigo cord, blackened copper, and cast-glass rain moves from a dense storm mass into loose windblown strands. It gives the wall scale and movement while allowing the green envelope to remain visible.", palette: ["#b28a54", "#1e2430", "#614e3c", "#aaa39a"] }
+      a: { name: "Roseate Flight", short: "Zac Maras cutout commission study", description: "Three oversized roseate spoonbills, Louisiana iris forms, cypress seeds, and rippling water shapes sweep across the wall as individually painted dimensional cutouts. This is a placement and subject brief for a direct Zac Maras commission; the final composition and visual language should remain entirely artist-authored.", palette: ["#e76472", "#ef8ba0", "#146f9b", "#6e8b36"] },
+      b: { name: "Garden After Dark", short: "Artist-authored bead-and-fiber relief", description: "A museum-scale field of glass beadwork, stitched textile, radiating feather rhythms, night flowers, river bends, and procession pulses concentrates New Orleans color into one extraordinary object. It should only move forward as a direct commission with a New Orleans Black Masking Indian artist, with full authorship and cultural specificity.", palette: ["#672b75", "#087a86", "#d34570", "#d99a28"] },
+      c: { name: "Crescent City Cloth", short: "Contemporary New Orleans art quilt", description: "A direct textile commission turns the Mississippi crescent, shotgun-house bars, porch shadows, ironwork curves, flood lines, and syncopated rhythm into a saturated hand-quilted field. The stepped silhouette and visible stitchwork make the piece architectural, tactile, and unmistakably of this city.", palette: ["#126da0", "#e8685b", "#d9a827", "#241c28"] }
     },
     allRenderings: [
+      { src: "assets/olive-roseate-flight-cutouts.png", label: "Roseate Flight", meta: "New Orleans color study · Zac Maras cutout commission brief", sourceUrl: "https://www.staymarais.com/artist-spotlight-zac-maras" },
+      { src: "assets/olive-wet-season.png", label: "Wet Season", meta: "Color study · Reverse-painted salvaged window glass" },
+      { src: "assets/olive-crescent-weather.png", label: "Crescent Weather", meta: "Color study · Monumental oil-and-wax painting" },
+      { src: "assets/olive-garden-after-dark.png", label: "Garden After Dark", meta: "New Orleans color study · Direct artist-collaboration concept" },
+      { src: "assets/olive-shotgun-color-archive.png", label: "Shotgun Color Archive", meta: "New Orleans color study · Salvaged architectural assemblage" },
+      { src: "assets/olive-crescent-city-cloth.png", label: "Crescent City Cloth", meta: "New Orleans color study · Contemporary art-quilt commission" },
       { src: "assets/olive-mississippi-cut.png", label: "Mississippi Cut", meta: "Focal-point study · Backlit sinker-cypress relief" },
       { src: "assets/olive-tide-choir.png", label: "Tide Choir", meta: "Focal-point study · Louisiana-clay wall constellation" },
       { src: "assets/olive-storm-veil.png", label: "Storm Veil", meta: "Focal-point study · Palmetto, cane, copper + glass" },
