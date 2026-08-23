@@ -82,14 +82,18 @@ const rooms = [
     originals: ["7719","7720","7721","7722","7723","7724"]
   },
   {
-    id: "teal", number: "Room 03", name: "C112", description: "A monochromatic jewel box. The narrow wall beside the bath is the room’s single art moment, so the work can be warmer and more concentrated.",
-    images: { a: "assets/teal-a.jpg", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" },
+    id: "teal", number: "Room 03", name: "C112", description: "A monochromatic teal jewel box. The broad wall above the solid headboard is the primary art plane; the narrow wall beside the bath stays empty so the doorway and saturated envelope can breathe.",
+    images: { a: "assets/teal-cypress-current-above-bed.png", b: "assets/teal-b.jpg", c: "assets/teal-c.jpg" },
+    options: {
+      a: { name: "Cypress Current", short: "Carved sinker-cypress relief", description: "A long, low slab of Louisiana sinker cypress carries shallow hand-carved river and levee lines. Warm wood bridges the bed, ochre textile, and saturated teal envelope without introducing another framed picture.", palette: ["#173f45", "#6f3e21", "#a86624", "#e8dfd0"] }
+    },
     allRenderings: [
       { src: "assets/teal-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Botanical print" },
       { src: "assets/teal-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Geometric painting" },
       { src: "assets/teal-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed pair" },
       { src: "assets/teal-crescent-brass.png", label: "Crescent Grid", meta: "Louisiana Round · Cast-brass relief" },
-      { src: "assets/whereyart-river8-c112.png", label: "River #8 — Connor McManus", meta: "Where Y’Art Works · 12 × 24 in acrylic on canvas", sourceUrl: "https://whereyartworks.com/shop/connor-mcmanus-river-8/8844" }
+      { src: "assets/whereyart-river8-c112.png", label: "River #8 — Connor McManus", meta: "Where Y’Art Works · 12 × 24 in acrylic on canvas", sourceUrl: "https://whereyartworks.com/shop/connor-mcmanus-river-8/8844" },
+      { src: "assets/teal-cypress-current-above-bed.png", label: "Cypress Current — Above Bed", meta: "Placement correction · Carved sinker-cypress relief · Side wall left empty" }
     ],
     originals: ["7717","7718"]
   },
