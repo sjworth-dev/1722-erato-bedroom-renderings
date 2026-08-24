@@ -129,7 +129,7 @@ const rooms = [
     originals: ["7717","7718"]
   },
   {
-    id: "terra", number: "Room 04", name: "Terracotta Botanical A", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
+    id: "terra", number: "Room 04", name: "C212", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
     images: { a: "assets/terra-cats-claw-april-mixed.png", b: "assets/terra-magnolia-moon-hybrid.png", c: "assets/terra-found-object-ledge.png" },
     options: {
       a: { name: "Cat's-Claw April", short: "Cottage mural + one cascading fiber vine", description: "A spare painted cottage and ironwork elevation sits quietly over the bed while one hand-knotted chartreuse-and-jute vine overtakes its corner. The installation adds tactility without competing with the room's botanical wallpaper.", palette: ["#b76550", "#8a8241", "#b49358", "#d9d0bd"] },
@@ -189,7 +189,7 @@ const rooms = [
   },
   { id: "teal-built-in", number: "Room 07", name: "C103", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
   { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true },
-  { id: "terra-b", number: "Room 09", name: "C212", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7727","7728"], sourceOnly: true },
+  { id: "terra-b", number: "Room 09", name: "Room code TBD", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7727","7728"], sourceOnly: true },
   { id: "terra-c", number: "Room 10", name: "Terracotta Botanical C", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7732","7733","7734"], sourceOnly: true },
   { id: "terra-d", number: "Room 11", name: "C214", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7735","7736","7737"], sourceOnly: true }
 ];
