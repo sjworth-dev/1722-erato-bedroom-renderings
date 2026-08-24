@@ -165,14 +165,15 @@ const rooms = [
   },
   {
     id: "peacock", number: "Room 05", name: "C215", description: "The blue headboard and dark botanical niche are already expressive. The strongest strategy is a restrained, locally collected gesture above the bed, with bolder wall-integrated studies retained as alternates.",
-    images: { a: "assets/c215-river-relics-found-object.png", b: "assets/c215-blue-balcony-current.png", c: "assets/c215-second-line-brass-score.png" },
+    images: { a: "assets/c215-single-river-painting.png", b: "assets/c215-blue-balcony-current.png", c: "assets/c215-second-line-brass-score.png" },
     options: {
-      a: { name: "River Relics", short: "10 × 8 oil + found glazed tile", description: "A tiny Mississippi-at-night oil is paired with one irregular fragment of blue-glazed architectural tile. The asymmetry feels found over time, while the small scale lets the wallpaper, headboard and objects share the room instead of competing.", palette: ["#173f45", "#335e73", "#a95846", "#b79358"] },
+      a: { name: "River Nocturne", short: "One small 10 × 14 river painting", description: "A single, almost-abstract Mississippi-at-blue-hour oil sits quietly above the bed in a slim walnut frame. Its modest scale feels assured and personal, allowing the saturated headboard and wallpaper niche to remain the room's primary composition.", palette: ["#173f45", "#335e73", "#a95846", "#b79358"] },
       b: { name: "Blue Balcony Current", short: "Wallpaper branches become river and ironwork", description: "Teal and coral marks slip out of the wallpaper niche, cross the corner and resolve into a sparse balcony-and-river drawing above the bed. One brass crescent acts as the only dimensional punctuation.", palette: ["#173f45", "#317588", "#b85e4d", "#b49358"] },
       c: { name: "Second-Line Brass Score", short: "Single patinated-brass rhythm sculpture", description: "One horizontal brass composition translates a second-line rhythm into bent arcs, rests and beats. Its open construction reads clearly against the pale wall without adding another field of pattern.", palette: ["#173f45", "#8b6841", "#b49358", "#d9d0bd"] }
     },
     allRenderings: [
-      { src: "assets/c215-river-relics-found-object.png", label: "River Relics", meta: "Recommended found-object study · 10 × 8 river oil + glazed architectural fragment" },
+      { src: "assets/c215-single-river-painting.png", label: "River Nocturne", meta: "Recommended quiet study · Single 10 × 14 Mississippi-at-blue-hour oil" },
+      { src: "assets/c215-river-relics-found-object.png", label: "River Relics", meta: "Alternate found-object study · 10 × 8 river oil + glazed architectural fragment" },
       { src: "assets/c215-blue-balcony-current.png", label: "Blue Balcony Current", meta: "Wallpaper-integrated study · Hand-painted river current + balcony line" },
       { src: "assets/c215-second-line-brass-score.png", label: "Second-Line Brass Score", meta: "Sculptural study · Patinated-brass rhythm composition" },
       { src: "assets/c215-crescent-city-glass.png", label: "Crescent City Glass", meta: "Craft study · Reverse-painted glass river-at-night panel" },
@@ -214,15 +215,16 @@ const rooms = [
   { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true },
   { id: "terra-b", number: "Room 09", name: "C202", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7725","7726"], sourceOnly: true },
   {
-    id: "terra-d", number: "Room 11", name: "C214", description: "The burgundy headboard and dark botanical niche carry most of the visual weight. A tiny painting paired with one salvaged fragment gives the room a credible New Orleans collecting story without creating a second focal wall.",
-    images: { a: "assets/c214-courtyard-relics-found-object.png", b: "assets/c214-garden-iron-nocturne.png", c: "assets/c214-floatmakers-magnolia.png" },
+    id: "terra-d", number: "Room 11", name: "C214", description: "The burgundy headboard and dark botanical niche carry most of the visual weight. One genuinely small New Orleans painting gives the room a credible collecting story without creating a second focal wall.",
+    images: { a: "assets/c214-single-courtyard-painting.png", b: "assets/c214-garden-iron-nocturne.png", c: "assets/c214-floatmakers-magnolia.png" },
     options: {
-      a: { name: "Courtyard Relics", short: "9 × 12 oil + salvaged iron rosette", description: "A small rain-darkened courtyard painting and one cast-iron rosette sit loosely above the bed. Their mismatched material and deliberately modest scale feel inherited and collected—not like a hotel art package.", palette: ["#4a2728", "#282622", "#8b6944", "#d9d0bd"] },
+      a: { name: "Courtyard Nocturne", short: "One small 9 × 12 courtyard painting", description: "A single rain-darkened New Orleans courtyard oil sits quietly above the bed in a slim walnut frame. The tiny vertical work rewards a closer look and gives the wallpaper and burgundy architecture the breathing room they need.", palette: ["#4a2728", "#282622", "#8b6944", "#d9d0bd"] },
       b: { name: "Garden Iron Nocturne", short: "Wallpaper foliage becomes balcony ironwork", description: "A few botanical forms escape the wallpaper niche and turn into a restrained wrought-iron line drawing above the bed. A brass crescent and rosette make the transformation architectural rather than mural-like.", palette: ["#342d29", "#592d2d", "#8a7457", "#b49358"] },
       c: { name: "Floatmaker's Magnolia", short: "Single sculptural Mardi Gras atelier piece", description: "One oversized papier-mâché magnolia, finished with visible handwork and a softly aged surface, brings the wit and craft of a New Orleans floatmaking studio into the room without adding more pattern.", palette: ["#4a2728", "#d5c6a3", "#8d7551", "#ece3d2"] }
     },
     allRenderings: [
-      { src: "assets/c214-courtyard-relics-found-object.png", label: "Courtyard Relics", meta: "Recommended found-object study · 9 × 12 courtyard oil + cast-iron rosette" },
+      { src: "assets/c214-single-courtyard-painting.png", label: "Courtyard Nocturne", meta: "Recommended quiet study · Single 9 × 12 rain-darkened courtyard oil" },
+      { src: "assets/c214-courtyard-relics-found-object.png", label: "Courtyard Relics", meta: "Alternate found-object study · 9 × 12 courtyard oil + cast-iron rosette" },
       { src: "assets/c214-garden-iron-nocturne.png", label: "Garden Iron Nocturne", meta: "Wallpaper-integrated study · Botanical ironwork + brass crescent" },
       { src: "assets/c214-floatmakers-magnolia.png", label: "Floatmaker's Magnolia", meta: "Sculptural craft study · Hand-built papier-mâché flower" },
       { src: "assets/c214-courtyard-after-rain.png", label: "Courtyard After Rain", meta: "Quiet painting study · Single 20 × 24 New Orleans courtyard oil" }
