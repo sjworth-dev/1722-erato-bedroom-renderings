@@ -193,6 +193,9 @@ const rooms = [
   { id: "terra-d", number: "Room 11", name: "C214", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7735","7736","7737"], sourceOnly: true }
 ];
 
+const roomOrder = ["C112", "C105", "C103", "C204", "C202", "C208", "C212", "C214", "C215", "C217"];
+rooms.sort((a, b) => roomOrder.indexOf(a.name) - roomOrder.indexOf(b.name));
+
 let activeRoom = rooms[0].id;
 let activeDirection = "a";
 let collectionDirection = "a";
