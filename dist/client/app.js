@@ -173,6 +173,8 @@ const rooms = [
     },
     allRenderings: [
       { src: "assets/c215-single-river-painting.png", label: "River Nocturne", meta: "Recommended quiet study · Single 10 × 14 Mississippi-at-blue-hour oil" },
+      { src: "assets/c215-tile-reliquary.png", label: "Tile Reliquary", meta: "Found-object study · Glazed architectural fragment floating in linen" },
+      { src: "assets/c215-floatmakers-moon.png", label: "Floatmaker's Moon", meta: "Found-object study · Papier-mâché working maquette on a walnut shelf" },
       { src: "assets/c215-river-relics-found-object.png", label: "River Relics", meta: "Alternate found-object study · 10 × 8 river oil + glazed architectural fragment" },
       { src: "assets/c215-blue-balcony-current.png", label: "Blue Balcony Current", meta: "Wallpaper-integrated study · Hand-painted river current + balcony line" },
       { src: "assets/c215-second-line-brass-score.png", label: "Second-Line Brass Score", meta: "Sculptural study · Patinated-brass rhythm composition" },
@@ -224,6 +226,8 @@ const rooms = [
     },
     allRenderings: [
       { src: "assets/c214-single-courtyard-painting.png", label: "Courtyard Nocturne", meta: "Recommended quiet study · Single 9 × 12 rain-darkened courtyard oil" },
+      { src: "assets/c214-pin-mounted-iron-rosette.png", label: "Iron Rosette", meta: "Found-object study · Salvaged iron fragment on three brass museum pins" },
+      { src: "assets/c214-plaster-ghost-trace.png", label: "Plaster Ghost", meta: "Found-object study · Broken acanthus fragment + hand-painted conservation trace" },
       { src: "assets/c214-courtyard-relics-found-object.png", label: "Courtyard Relics", meta: "Alternate found-object study · 9 × 12 courtyard oil + cast-iron rosette" },
       { src: "assets/c214-garden-iron-nocturne.png", label: "Garden Iron Nocturne", meta: "Wallpaper-integrated study · Botanical ironwork + brass crescent" },
       { src: "assets/c214-floatmakers-magnolia.png", label: "Floatmaker's Magnolia", meta: "Sculptural craft study · Hand-built papier-mâché flower" },
