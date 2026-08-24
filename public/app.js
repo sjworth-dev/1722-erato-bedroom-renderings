@@ -176,9 +176,23 @@ const rooms = [
     originals: ["7739","7740"]
   },
   {
-    id: "ivory", number: "Room 06", name: "C217", description: "The calmest room in the set. The centered wall above the headboard can support a serene diptych, one statement work, or a compact archival grid.",
-    images: { a: "assets/ivory-a.jpg", b: "assets/ivory-b.jpg", c: "assets/ivory-c.jpg" },
+    id: "ivory", number: "Room 06", name: "C217", description: "A dark-green jewel box with a tropical wallpaper niche beside the bed. The corrected comparison view keeps both wallpaper and headboard visible, allowing each art concept to be judged against the room's full pattern and color load.",
+    images: { a: "assets/ivory-balcony-bloom-wallpaper-view.png", b: "assets/ivory-garden-second-line-wallpaper-view.png", c: "assets/ivory-user-painting-16x20-wallpaper-view.png" },
+    options: {
+      a: { name: "Balcony Bloom", short: "Wallpaper foliage becomes New Orleans ironwork", description: "Selected leaf contours escape the tropical niche, turn the corner and gradually become cast-iron balcony scrollwork above the bed. One salvaged iron rosette marks the transformation, making the wallpaper and art one architectural composition.", palette: ["#173f36", "#405f53", "#78543f", "#b49358"] },
+      b: { name: "Garden Second Line", short: "Wallpaper foliage becomes a procession", description: "A pale painted vine leaves the wallpaper and becomes a looping second-line route above the headboard. One parasol, one magnolia cluster and one crescent supply the only dimensional notes.", palette: ["#31594f", "#b49358", "#c89089", "#ddd3be"] },
+      c: { name: "16 × 20 Night Painting", short: "Supplied New Orleans painting at true scale", description: "The supplied 16 × 20-inch painting is centered above the king headboard in a slim dark-walnut and brass frame. Its saturated house and nightlife colors connect to the wallpaper while its deliberately small scale keeps the room collected rather than decorated.", palette: ["#203c46", "#4a7f58", "#a74f42", "#9f6b35"] }
+    },
     allRenderings: [
+      { src: "assets/ivory-balcony-bloom-wallpaper-view.png", label: "Balcony Bloom", meta: "Wall-integrated New Orleans study · Wallpaper foliage + balcony ironwork" },
+      { src: "assets/ivory-garden-second-line-wallpaper-view.png", label: "Garden Second Line", meta: "Wall-integrated New Orleans study · Painted procession + three relief pieces" },
+      { src: "assets/ivory-user-painting-16x20-wallpaper-view.png", label: "Supplied Night Painting — 16 × 20", meta: "Actual-scale placement study · Slim walnut and brass frame" },
+      { src: "assets/ivory-second-line-parasol-wallpaper-view.png", label: "Second-Line Parasol", meta: "New Orleans study · Beaded parasol + painted procession trace" },
+      { src: "assets/ivory-shotgun-moon-wallpaper-view.png", label: "Shotgun Moon", meta: "New Orleans study · Architectural mural + salvaged shutter" },
+      { src: "assets/ivory-floatmakers-pelican-wallpaper-view.png", label: "Floatmaker's Pelican", meta: "New Orleans study · Sculptural papier-mâché floatmaking commission" },
+      { src: "assets/ivory-iron-garden-wallpaper-view.png", label: "Iron Garden", meta: "Corrected wallpaper view · Salvaged cast-iron fragment" },
+      { src: "assets/ivory-river-loom-wallpaper-view.png", label: "River Loom", meta: "Corrected wallpaper view · Tufted textile + river cane" },
+      { src: "assets/ivory-palmetto-eclipse-wallpaper-view.png", label: "Palmetto Eclipse", meta: "Corrected wallpaper view · Tonal mural + Louisiana clay" },
       { src: "assets/ivory-a.jpg", label: "Poetic Louisiana", meta: "Round 01 · Wetland diptych" },
       { src: "assets/ivory-b.jpg", label: "Graphic Modernist", meta: "Round 01 · Textile geometry" },
       { src: "assets/ivory-c.jpg", label: "Collected Archive", meta: "Round 01 · Framed grouping" },
