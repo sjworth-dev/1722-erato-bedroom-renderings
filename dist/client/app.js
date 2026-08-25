@@ -391,7 +391,6 @@ function renderCompare(room) {
 function renderCollection() {
   $("collection-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `<button class="collection-tab ${id === collectionDirection ? "active" : ""}" data-collection-direction="${id}">${option.letter} · ${option.name}</button>`).join("");
   $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${roomImage(room, collectionDirection)}" alt="${room.name}${room.sourceOnly ? " — original condition" : ` — ${optionFor(room, collectionDirection).name}`}"><span>${room.number} · ${room.name}${room.sourceOnly ? " · Source only" : ""}</span></button>`).join("");
-  $("collection-summary").textContent = directions[collectionDirection].collection;
   $("collection-tabs").querySelectorAll("[data-collection-direction]").forEach((button) => button.addEventListener("click", () => {
     collectionDirection = button.dataset.collectionDirection;
     renderCollection();
@@ -448,9 +447,6 @@ function renderArchive(room) {
   $("original-count").textContent = room.originals.length;
   $("rendering-count").textContent = renderings.length;
   $("rendering-tab").disabled = room.sourceOnly;
-  $("archive-description").textContent = archiveView === "originals"
-    ? `${room.originals.length} source photograph${room.originals.length === 1 ? "" : "s"} document${room.originals.length === 1 ? "s" : ""} the room${room.sourceOnly ? " before its first rendering study" : ", its millwork, and adjoining spaces"}.`
-    : `${renderings.length} rendering${renderings.length === 1 ? "" : "s"} across every completed concept round, labeled by medium and sequence.`;
   $("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.classList.toggle("active", button.dataset.archiveView === archiveView));
   $("archive-grid").innerHTML = lightboxItems.map((item, index) => `
     <button class="archive-card" data-archive-index="${index}" type="button">
@@ -531,7 +527,6 @@ function render() {
   $("room-position").textContent = `Bedroom ${String(roomIndex + 1).padStart(2, "0")} / ${String(rooms.length).padStart(2, "0")}`;
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
-  $("room-description").textContent = room.description;
   $("rendering-jump").hidden = Boolean(room.sourceOnly);
   $("rendering-jump-count").textContent = renderingItems(room).length;
   $("hero-image").src = roomImage(room, activeDirection);
@@ -539,7 +534,6 @@ function render() {
   $("image-option").textContent = room.sourceOnly ? "Original condition" : choice.name;
   $("image-caption").textContent = room.sourceOnly ? "Awaiting first art-direction renderings" : choice.short;
   $("direction-name").textContent = choice.name;
-  $("direction-description").textContent = choice.description;
   $("palette").innerHTML = choice.palette.map((color) => `<span class="swatch" style="background:${color}" title="${color}"></span>`).join("");
   $("room-note").value = saved.note;
   $("frame-choice").value = saved.frame;

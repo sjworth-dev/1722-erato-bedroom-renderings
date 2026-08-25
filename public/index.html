@@ -8,7 +8,7 @@
   <meta property="og:description" content="Compare, shortlist, and refine the bedroom art program for 1722 Erato Hotel Villas.">
   <meta property="og:image" content="og.png">
   <title>Erato Art Direction Studio</title>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <header class="topbar">
@@ -33,10 +33,6 @@
         <h2>Eleven rooms,<br>one point of view.</h2>
       </div>
       <nav id="room-nav" class="room-nav" aria-label="Bedrooms"></nav>
-      <div class="sidebar-brief">
-        <span class="brief-number">01</span>
-        <div><strong>The brief</strong><p>Create a family resemblance without repeating the same solution across the full collection.</p></div>
-      </div>
     </aside>
 
     <main id="main-panel" class="main-panel">
@@ -50,7 +46,6 @@
 
       <section class="room-intro">
         <div><p id="room-kicker" class="eyebrow"></p><h1 id="room-title"></h1></div>
-        <p id="room-description" class="room-description"></p>
       </section>
 
       <button id="rendering-jump" class="rendering-jump" type="button">
@@ -59,8 +54,7 @@
       </button>
 
       <section id="source-room-notice" class="source-room-notice" hidden>
-        <span>New source room</span>
-        <p>This room has been added from the original photo set. Its three art-direction renderings are the next design step.</p>
+        <span>Source room · Renderings pending</span>
       </section>
 
       <section class="source-photo-strip" aria-labelledby="source-photo-heading">
@@ -92,7 +86,7 @@
 
       <section class="decision-studio">
         <article class="curatorial-card">
-          <div><p class="eyebrow">Curatorial rationale</p><h2 id="direction-name"></h2><p id="direction-description"></p></div>
+          <div><p class="eyebrow">Selected direction</p><h2 id="direction-name"></h2></div>
           <div><p class="eyebrow">Palette cue</p><div id="palette" class="palette" aria-label="Color palette"></div></div>
         </article>
         <article class="refinement-card">
@@ -118,7 +112,6 @@
           <div>
             <p class="eyebrow">Complete room gallery</p>
             <h2 id="archive-heading">Every rendering, in one place.</h2>
-            <p id="archive-description">Review every source photograph and finished rendering for this room.</p>
           </div>
           <div class="archive-tabs" id="archive-tabs" aria-label="Room archive view">
             <button data-archive-view="originals" type="button">Original photographs <b id="original-count">0</b></button>
@@ -138,18 +131,18 @@
   <div class="modal-backdrop" id="collection-backdrop" hidden></div>
   <section class="collection-modal" id="collection-modal" aria-hidden="true" aria-label="Whole collection view">
     <header class="modal-header">
-      <div><p class="eyebrow">Whole-house view</p><h2>Read the collection as one story.</h2><p>Switch a direction to see how its visual language travels across the six rendered rooms and five source rooms awaiting their first studies.</p></div>
+      <div><p class="eyebrow">Whole-house view</p><h2>View the collection.</h2></div>
       <button id="close-collection" class="modal-close" type="button" aria-label="Close collection view">×</button>
     </header>
     <div id="collection-tabs" class="collection-tabs"></div>
     <div id="collection-grid" class="collection-grid"></div>
-    <div class="collection-footer"><p id="collection-summary"></p><button id="apply-collection" class="button button-dark" type="button">Set as working direction for all rooms</button></div>
+    <div class="collection-footer"><button id="apply-collection" class="button button-dark" type="button">Set as working direction for all rooms</button></div>
   </section>
 
   <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
   <aside class="decision-drawer" id="decision-drawer" aria-hidden="true" aria-label="Art program decisions">
     <div class="drawer-header">
-      <div><p class="eyebrow">Working art program</p><h2>Decision book</h2><p>A live snapshot of the complete room collection.</p></div>
+      <div><p class="eyebrow">Working art program</p><h2>Decision book</h2></div>
       <button id="close-drawer" class="modal-close" type="button" aria-label="Close decision book">×</button>
     </div>
     <div id="decision-summary" class="decision-summary"></div>
@@ -165,6 +158,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <footer><p>Concept renderings for art-direction decisions. Final artwork dimensions and procurement should be verified against field measurements.</p></footer>
-  <script src="app.js?v=32"></script>
+  <script src="app.js?v=33"></script>
 </body>
 </html>
