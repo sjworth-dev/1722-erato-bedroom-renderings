@@ -240,22 +240,39 @@ const rooms = [
 const roomOrder = ["C112", "C105", "C103", "C204", "C202", "C208", "C212", "C214", "C215", "C217"];
 rooms.sort((a, b) => roomOrder.indexOf(a.name) - roomOrder.indexOf(b.name));
 
-const livingSpacePhotos = [
-  "7790", "7791", "7792", "7793", "7794", "7795", "7796", "7797", "7798", "7799",
-  "7800", "7801", "7802", "7804", "7805", "7806", "7807", "7808", "7809", "7810",
-  "7811", "7812", "7813", "7814", "7815", "7816", "7817", "7818", "7819", "7820",
-  "7822", "7824", "7825"
-].map((number, index, photos) => ({
-  src: `assets/living-spaces/IMG_${number}.jpg`,
-  label: "Living spaces",
-  meta: `Photo ${String(index + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`
-}));
+function livingSpaceSet(name, numbers) {
+  return numbers.map((number, index) => ({
+    src: `assets/living-spaces/IMG_${number}.jpg`,
+    label: name,
+    meta: `Photo ${String(index + 1).padStart(2, "0")} / ${String(numbers.length).padStart(2, "0")}`
+  }));
+}
+
+const livingSpaceRooms = {
+  living: {
+    name: "Living Room",
+    photos: livingSpaceSet("Living Room", [
+      "7790", "7791", "7792", "7793", "7794", "7795", "7796", "7807", "7808", "7809",
+      "7810", "7812", "7813", "7814", "7815", "7816", "7817", "7818", "7819", "7820",
+      "7822", "7824", "7825"
+    ])
+  },
+  dining: {
+    name: "Dining Room",
+    photos: livingSpaceSet("Dining Room", [
+      "7797", "7798", "7799", "7800", "7801", "7802", "7804", "7805", "7806", "7811"
+    ])
+  }
+};
+
+const livingSpacePhotos = Object.values(livingSpaceRooms).flatMap((room) => room.photos);
 
 let activeRoom = rooms[0].id;
 let activeDirection = "a";
 let collectionDirection = "a";
 let viewMode = "focus";
 let archiveView = "renderings";
+let activeLivingSpaceRoom = "living";
 let lightboxItems = [];
 let lightboxIndex = 0;
 const state = JSON.parse(localStorage.getItem("erato-direction-state") || "{}");
@@ -521,13 +538,22 @@ function closeCollection() {
 }
 
 function renderLivingSpaces() {
-  $("living-spaces-grid").innerHTML = livingSpacePhotos.map((photo, index) => `
+  const room = livingSpaceRooms[activeLivingSpaceRoom];
+  $("living-spaces-tabs").innerHTML = Object.entries(livingSpaceRooms).map(([id, item]) => `
+    <button class="collection-tab ${id === activeLivingSpaceRoom ? "active" : ""}" data-living-space-room="${id}" type="button" aria-pressed="${id === activeLivingSpaceRoom}">
+      ${item.name} <b>${item.photos.length}</b>
+    </button>`).join("");
+  $("living-spaces-tabs").querySelectorAll("[data-living-space-room]").forEach((button) => button.addEventListener("click", () => {
+    activeLivingSpaceRoom = button.dataset.livingSpaceRoom;
+    renderLivingSpaces();
+  }));
+  $("living-spaces-grid").innerHTML = room.photos.map((photo, index) => `
     <button class="living-spaces-card" data-living-space-index="${index}" type="button">
-      <img src="${photo.src}" alt="Living spaces · Photo ${index + 1}" loading="lazy">
+      <img src="${photo.src}" alt="${room.name} · Photo ${index + 1}" loading="lazy">
       <span>${String(index + 1).padStart(2, "0")}</span>
     </button>`).join("");
   $("living-spaces-grid").querySelectorAll("[data-living-space-index]").forEach((button) => button.addEventListener("click", () => {
-    lightboxItems = livingSpacePhotos;
+    lightboxItems = room.photos;
     closeLivingSpaces();
     openLightbox(Number(button.dataset.livingSpaceIndex));
   }));

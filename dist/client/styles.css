@@ -182,7 +182,11 @@ button { color: inherit; }
 .collection-card span { position: absolute; left: 12px; right: 12px; bottom: 11px; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.65); font: 500 16px/1 var(--serif); }
 .collection-footer { margin-top: 18px; padding-top: 18px; display: flex; justify-content: flex-end; border-top: 1px solid var(--line); }
 .living-spaces-modal { width: min(1320px,calc(100% - 44px)); }
-.living-spaces-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.living-spaces-tabs { margin-bottom: 22px; }
+.living-spaces-tabs .collection-tab { display: inline-flex; align-items: center; gap: 8px; }
+.living-spaces-tabs .collection-tab b { min-width: 19px; height: 19px; padding: 0 5px; display: inline-grid; place-items: center; border-radius: 999px; color: var(--clay); background: rgba(170,94,69,.1); font-size: 9px; }
+.living-spaces-tabs .collection-tab.active b { color: var(--plum); background: var(--paper); }
+.living-spaces-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
 .living-spaces-card { padding: 0; overflow: hidden; position: relative; border: 0; border-radius: 12px; background: #ddd5ca; cursor: zoom-in; }
 .living-spaces-card img { width: 100%; aspect-ratio: 4/3; display: block; object-fit: cover; transition: transform .3s ease, filter .3s ease; }
 .living-spaces-card:hover img { transform: scale(1.025); filter: brightness(.92); }
