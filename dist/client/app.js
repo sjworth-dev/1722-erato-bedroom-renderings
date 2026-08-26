@@ -126,7 +126,12 @@ const rooms = [
       { src: "assets/teal-erato-impressions.png", label: "Erato Impressions", meta: "New Orleans custom study · Plaster casts sourced from the property" },
       { src: "assets/teal-second-line-score.png", label: "Second-Line Score", meta: "New Orleans custom study · Patinated-brass rhythm installation" }
     ],
-    originals: ["7717","7718"]
+    originals: [
+      "7717", "7718",
+      { number: "7800", folder: "living-spaces" },
+      { number: "7801", folder: "living-spaces" },
+      { number: "7802", folder: "living-spaces" }
+    ]
   },
   {
     id: "terra", number: "Room 04", name: "C212", description: "Warm plaster tones and a patterned millwork niche create a layered envelope. The bed wall needs art with enough clarity to hold its own without competing.",
@@ -214,8 +219,8 @@ const rooms = [
     originals: ["7741","7742","7743"]
   },
   { id: "teal-built-in", number: "Room 07", name: "C103", description: "A newly separated room study defined by deep teal millwork. Its furniture plan and art program are ready to be developed as a distinct direction.", originals: ["7711"], sourceOnly: true },
-  { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730","7731"], sourceOnly: true },
-  { id: "terra-b", number: "Room 09", name: "C202", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7725","7726"], sourceOnly: true },
+  { id: "pale-blue-toile", number: "Room 08", name: "C208", description: "A second newly separated room with pale-blue built-ins and toile-lined millwork. It now has its own source page, independent from the checkerboard bedroom.", originals: ["7730", "7731", { number: "7805", folder: "living-spaces" }, { number: "7806", folder: "living-spaces" }], sourceOnly: true },
+  { id: "terra-b", number: "Room 09", name: "C202", description: "A newly separated terracotta bedroom documented in its own source set. Its individual furniture plan and art direction can now be developed independently.", originals: ["7725", "7726", { number: "7804", folder: "living-spaces" }], sourceOnly: true },
   {
     id: "terra-d", number: "Room 11", name: "C214", description: "The burgundy headboard and dark botanical niche carry most of the visual weight. One genuinely small New Orleans painting gives the room a credible collecting story without creating a second focal wall.",
     images: { a: "assets/c214-single-courtyard-painting.png", b: "assets/c214-garden-iron-nocturne.png", c: "assets/c214-floatmakers-magnolia.png" },
@@ -243,7 +248,7 @@ const rooms = [
   },
   {
     id: "dining-room", number: "Room 13", name: "Dining Room",
-    originals: ["7797", "7798", "7799", "7800", "7801", "7802", "7804", "7805", "7806", "7811"],
+    originals: ["7797", "7798", "7799", "7811"],
     originalFolder: "living-spaces",
     sourceOnly: true
   }
@@ -274,7 +279,7 @@ const livingSpaceRooms = {
   dining: {
     name: "Dining Room",
     photos: livingSpaceSet("Dining Room", [
-      "7797", "7798", "7799", "7800", "7801", "7802", "7804", "7805", "7806", "7811"
+      "7797", "7798", "7799", "7811"
     ])
   }
 };
@@ -312,8 +317,11 @@ function isComplete(id) {
 }
 
 function roomImage(room, direction = "a") {
-  const originalFolder = room.originalFolder || "originals";
-  return room.sourceOnly ? `assets/${originalFolder}/IMG_${room.originals[0]}.jpg` : room.images[direction];
+  if (!room.sourceOnly) return room.images[direction];
+  const firstOriginal = room.originals[0];
+  const number = typeof firstOriginal === "object" ? firstOriginal.number : firstOriginal;
+  const folder = typeof firstOriginal === "object" ? firstOriginal.folder : (room.originalFolder || "originals");
+  return `assets/${folder}/IMG_${number}.jpg`;
 }
 
 function optionFor(room, id) {
@@ -355,7 +363,7 @@ function renderNav() {
     <button class="room-button living-spaces-nav" data-living-spaces type="button">
       <img class="room-thumb" src="${livingSpacePhotos[0].src}" alt="">
       <span class="room-button-copy"><strong>Living spaces</strong><small>Property photographs</small></span>
-      <span class="room-status living-spaces-count" aria-label="33 living space photographs">33</span>
+      <span class="room-status living-spaces-count" aria-label="${livingSpacePhotos.length} living space photographs">${livingSpacePhotos.length}</span>
     </button>`;
   $("room-nav").querySelectorAll("[data-room]").forEach((button) => button.addEventListener("click", () => selectRoom(button.dataset.room)));
   $("room-nav").querySelector("[data-living-spaces]").addEventListener("click", openLivingSpaces);
@@ -453,12 +461,15 @@ function renderCollection() {
 }
 
 function originalItems(room) {
-  const originalFolder = room.originalFolder || "originals";
-  return room.originals.map((number, index) => ({
-    src: `assets/${originalFolder}/IMG_${number}.jpg`,
-    label: `${room.name} · Existing condition`,
-    meta: `Original ${String(index + 1).padStart(2, "0")} / ${String(room.originals.length).padStart(2, "0")}`
-  }));
+  return room.originals.map((original, index) => {
+    const number = typeof original === "object" ? original.number : original;
+    const folder = typeof original === "object" ? original.folder : (room.originalFolder || "originals");
+    return {
+      src: `assets/${folder}/IMG_${number}.jpg`,
+      label: `${room.name} · Existing condition`,
+      meta: `Original ${String(index + 1).padStart(2, "0")} / ${String(room.originals.length).padStart(2, "0")}`
+    };
+  });
 }
 
 function renderingItems(room) {
