@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An interactive art-direction studio for the bedrooms at 1722 Erato Hotel Villas.">
+  <meta name="description" content="An interactive art-direction studio and property photo library for 1722 Erato Hotel Villas.">
   <meta property="og:title" content="Erato Art Direction Studio">
-  <meta property="og:description" content="Compare, shortlist, and refine the bedroom art program for 1722 Erato Hotel Villas.">
+  <meta property="og:description" content="Compare bedroom art directions and review the living spaces at 1722 Erato Hotel Villas.">
   <meta property="og:image" content="og.png">
   <title>Erato Art Direction Studio</title>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <header class="topbar">
@@ -21,6 +21,7 @@
       <span class="progress-track"><i id="progress-fill"></i></span>
     </div>
     <div class="top-actions">
+      <button id="living-spaces-button" class="button button-quiet" type="button">Living spaces <b class="button-count">33</b></button>
       <button id="collection-button" class="button button-quiet" type="button">View collection</button>
       <button id="review-button" class="button button-dark" type="button">Decision book <b id="decision-count">0</b></button>
     </div>
@@ -139,6 +140,15 @@
     <div class="collection-footer"><button id="apply-collection" class="button button-dark" type="button">Set as working direction for all rooms</button></div>
   </section>
 
+  <div class="modal-backdrop" id="living-spaces-backdrop" hidden></div>
+  <section class="collection-modal living-spaces-modal" id="living-spaces-modal" aria-hidden="true" aria-label="Living spaces photo gallery">
+    <header class="modal-header">
+      <div><p class="eyebrow">Property photographs</p><h2>Living spaces</h2></div>
+      <button id="close-living-spaces" class="modal-close" type="button" aria-label="Close living spaces gallery">×</button>
+    </header>
+    <div id="living-spaces-grid" class="living-spaces-grid"></div>
+  </section>
+
   <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
   <aside class="decision-drawer" id="decision-drawer" aria-hidden="true" aria-label="Art program decisions">
     <div class="drawer-header">
@@ -158,6 +168,6 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <footer><p>Concept renderings for art-direction decisions. Final artwork dimensions and procurement should be verified against field measurements.</p></footer>
-  <script src="app.js?v=33"></script>
+  <script src="app.js?v=34"></script>
 </body>
 </html>

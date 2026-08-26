@@ -26,6 +26,7 @@ button { color: inherit; }
 .button:hover { transform: translateY(-1px); }
 .button-quiet { background: transparent; }
 .button-quiet:hover { background: #eee8df; }
+.button-count { min-width: 20px; height: 20px; display: inline-grid; place-items: center; margin-left: 6px; padding: 0 5px; border-radius: 99px; color: var(--plum); background: #eee8df; font-size: 9px; }
 .button-dark { color: #fff; background: var(--plum); }
 .button-dark b { min-width: 20px; height: 20px; display: inline-grid; place-items: center; margin-left: 7px; padding: 0 5px; border-radius: 99px; color: var(--plum); background: #fff; font-size: 10px; }
 .button-light { color: var(--plum); background: #fff; }
@@ -43,6 +44,9 @@ button { color: inherit; }
 .room-button small { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .1em; }
 .room-status { width: 18px; height: 18px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: transparent; font-size: 10px; }
 .room-status.complete { border-color: var(--sage); color: #fff; background: var(--sage); }
+.living-spaces-nav { margin-top: 11px; border-color: rgba(170,94,69,.24); background: rgba(251,249,244,.62); }
+.living-spaces-nav:hover { border-color: rgba(170,94,69,.48); background: var(--paper); }
+.living-spaces-count { width: 24px; color: var(--clay); border-color: rgba(170,94,69,.36); font-size: 8px; font-weight: 800; }
 .main-panel { width: min(1320px, 100%); padding: 30px clamp(28px,4.5vw,72px) 72px; margin: 0 auto; }
 .room-toolbar { min-height: 36px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .room-position { margin: 0; color: var(--muted); font-size: 11px; letter-spacing: .06em; }
@@ -177,6 +181,12 @@ button { color: inherit; }
 .collection-card:hover img { transform: scale(1.025); }
 .collection-card span { position: absolute; left: 12px; right: 12px; bottom: 11px; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.65); font: 500 16px/1 var(--serif); }
 .collection-footer { margin-top: 18px; padding-top: 18px; display: flex; justify-content: flex-end; border-top: 1px solid var(--line); }
+.living-spaces-modal { width: min(1320px,calc(100% - 44px)); }
+.living-spaces-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.living-spaces-card { padding: 0; overflow: hidden; position: relative; border: 0; border-radius: 12px; background: #ddd5ca; cursor: zoom-in; }
+.living-spaces-card img { width: 100%; aspect-ratio: 4/3; display: block; object-fit: cover; transition: transform .3s ease, filter .3s ease; }
+.living-spaces-card:hover img { transform: scale(1.025); filter: brightness(.92); }
+.living-spaces-card span { min-width: 27px; height: 27px; display: grid; place-items: center; position: absolute; right: 9px; bottom: 9px; border-radius: 50%; color: #fff; background: rgba(36,27,29,.56); backdrop-filter: blur(8px); font-size: 8px; font-weight: 800; letter-spacing: .06em; }
 .decision-drawer { width: min(540px,100%); padding: 32px; overflow: auto; position: fixed; inset: 0 0 0 auto; z-index: 41; background: var(--canvas); box-shadow: -25px 0 70px rgba(30,20,23,.25); transform: translateX(105%); transition: transform .24s ease; }
 .decision-drawer.open { transform: translateX(0); }
 .drawer-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
@@ -214,6 +224,7 @@ footer p { margin: 0; }
   .room-nav::-webkit-scrollbar { display: none; }
   .room-button { min-height: 52px; }
   .room-status { display: none; }
+  .living-spaces-nav { margin-top: 0; }
   .main-panel { padding: 20px 15px 50px; }
   .room-intro { padding: 18px 0 27px; }
   .room-intro h1 { font-size: 52px; }
@@ -225,7 +236,7 @@ footer p { margin: 0; }
   .visual-stage { aspect-ratio: 4/3; border-radius: 4px 4px 15px 15px; }
   .image-label { left: 14px; bottom: 14px; }
   .stage-shortlist { right: 12px; top: 12px; bottom: auto; background: rgba(38,30,31,.6); }
-  .compare-stage, .collection-grid { grid-template-columns: 1fr; }
+  .compare-stage, .collection-grid, .living-spaces-grid { grid-template-columns: 1fr; }
   .decision-studio { grid-template-columns: 1fr; }
   .curatorial-card, .refinement-card { min-height: 0; padding: 22px; }
   .decision-fields { grid-template-columns: 1fr; }

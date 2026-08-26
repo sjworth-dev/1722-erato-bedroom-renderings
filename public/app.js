@@ -240,6 +240,17 @@ const rooms = [
 const roomOrder = ["C112", "C105", "C103", "C204", "C202", "C208", "C212", "C214", "C215", "C217"];
 rooms.sort((a, b) => roomOrder.indexOf(a.name) - roomOrder.indexOf(b.name));
 
+const livingSpacePhotos = [
+  "7790", "7791", "7792", "7793", "7794", "7795", "7796", "7797", "7798", "7799",
+  "7800", "7801", "7802", "7804", "7805", "7806", "7807", "7808", "7809", "7810",
+  "7811", "7812", "7813", "7814", "7815", "7816", "7817", "7818", "7819", "7820",
+  "7822", "7824", "7825"
+].map((number, index, photos) => ({
+  src: `assets/living-spaces/IMG_${number}.jpg`,
+  label: "Living spaces",
+  meta: `Photo ${String(index + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`
+}));
+
 let activeRoom = rooms[0].id;
 let activeDirection = "a";
 let collectionDirection = "a";
@@ -300,7 +311,7 @@ function updateProgress() {
 }
 
 function renderNav() {
-  $("room-nav").innerHTML = rooms.map((room) => {
+  const roomButtons = rooms.map((room) => {
     const saved = roomState(room.id);
     return `<button class="room-button ${room.id === activeRoom ? "active" : ""}" data-room="${room.id}">
       <img class="room-thumb" src="${roomImage(room, saved.direction)}" alt="">
@@ -308,7 +319,14 @@ function renderNav() {
       <span class="room-status ${isComplete(room.id) ? "complete" : ""}" aria-label="${isComplete(room.id) ? "Room shaped" : "No decision yet"}">✓</span>
     </button>`;
   }).join("");
+  $("room-nav").innerHTML = `${roomButtons}
+    <button class="room-button living-spaces-nav" data-living-spaces type="button">
+      <img class="room-thumb" src="${livingSpacePhotos[0].src}" alt="">
+      <span class="room-button-copy"><strong>Living spaces</strong><small>Property photographs</small></span>
+      <span class="room-status living-spaces-count" aria-label="33 living space photographs">33</span>
+    </button>`;
   $("room-nav").querySelectorAll("[data-room]").forEach((button) => button.addEventListener("click", () => selectRoom(button.dataset.room)));
+  $("room-nav").querySelector("[data-living-spaces]").addEventListener("click", openLivingSpaces);
 }
 
 function renderTabs() {
@@ -502,6 +520,34 @@ function closeCollection() {
   document.body.style.overflow = "";
 }
 
+function renderLivingSpaces() {
+  $("living-spaces-grid").innerHTML = livingSpacePhotos.map((photo, index) => `
+    <button class="living-spaces-card" data-living-space-index="${index}" type="button">
+      <img src="${photo.src}" alt="Living spaces · Photo ${index + 1}" loading="lazy">
+      <span>${String(index + 1).padStart(2, "0")}</span>
+    </button>`).join("");
+  $("living-spaces-grid").querySelectorAll("[data-living-space-index]").forEach((button) => button.addEventListener("click", () => {
+    lightboxItems = livingSpacePhotos;
+    closeLivingSpaces();
+    openLightbox(Number(button.dataset.livingSpaceIndex));
+  }));
+}
+
+function openLivingSpaces() {
+  renderLivingSpaces();
+  $("living-spaces-backdrop").hidden = false;
+  requestAnimationFrame(() => $("living-spaces-modal").classList.add("open"));
+  $("living-spaces-modal").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLivingSpaces() {
+  $("living-spaces-modal").classList.remove("open");
+  $("living-spaces-modal").setAttribute("aria-hidden", "true");
+  setTimeout(() => { $("living-spaces-backdrop").hidden = true; }, 220);
+  document.body.style.overflow = "";
+}
+
 function applyCollection() {
   rooms.filter((room) => !room.sourceOnly).forEach((room) => { roomState(room.id).direction = collectionDirection; });
   activeDirection = collectionDirection;
@@ -606,6 +652,9 @@ $("previous-room").addEventListener("click", () => changeRoom(-1));
 $("next-room").addEventListener("click", () => changeRoom(1));
 $("next-room-large").addEventListener("click", () => changeRoom(1));
 $("collection-button").addEventListener("click", openCollection);
+$("living-spaces-button").addEventListener("click", openLivingSpaces);
+$("close-living-spaces").addEventListener("click", closeLivingSpaces);
+$("living-spaces-backdrop").addEventListener("click", closeLivingSpaces);
 $("close-collection").addEventListener("click", closeCollection);
 $("collection-backdrop").addEventListener("click", closeCollection);
 $("apply-collection").addEventListener("click", applyCollection);
@@ -631,7 +680,7 @@ $("image-lightbox").addEventListener("click", (event) => { if (event.target === 
 $("previous-image").addEventListener("click", () => changeLightbox(-1));
 $("next-image").addEventListener("click", () => changeLightbox(1));
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") { closeLightbox(); closeCollection(); closeDrawer(); }
+  if (event.key === "Escape") { closeLightbox(); closeCollection(); closeLivingSpaces(); closeDrawer(); }
   if ($("image-lightbox").classList.contains("open") && event.key === "ArrowLeft") changeLightbox(-1);
   if ($("image-lightbox").classList.contains("open") && event.key === "ArrowRight") changeLightbox(1);
 });
