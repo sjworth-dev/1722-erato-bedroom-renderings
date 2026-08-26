@@ -234,11 +234,25 @@ const rooms = [
       { src: "assets/c214-courtyard-after-rain.png", label: "Courtyard After Rain", meta: "Quiet painting study · Single 20 × 24 New Orleans courtyard oil" }
     ],
     originals: ["7735","7736","7737"]
+  },
+  {
+    id: "living-room", number: "Room 12", name: "Living Room",
+    originals: ["7790", "7791", "7792", "7793", "7794", "7795", "7796", "7807", "7808", "7809", "7810", "7812", "7813", "7814", "7815", "7816", "7817", "7818", "7819", "7820", "7822", "7824", "7825"],
+    originalFolder: "living-spaces",
+    sourceOnly: true
+  },
+  {
+    id: "dining-room", number: "Room 13", name: "Dining Room",
+    originals: ["7797", "7798", "7799", "7800", "7801", "7802", "7804", "7805", "7806", "7811"],
+    originalFolder: "living-spaces",
+    sourceOnly: true
   }
 ];
 
-const roomOrder = ["C112", "C105", "C103", "C204", "C202", "C208", "C212", "C214", "C215", "C217"];
+const roomOrder = ["C112", "C105", "C103", "C204", "C202", "C208", "C212", "C214", "C215", "C217", "Living Room", "Dining Room"];
 rooms.sort((a, b) => roomOrder.indexOf(a.name) - roomOrder.indexOf(b.name));
+
+const collectionRoomTotal = 13;
 
 function livingSpaceSet(name, numbers) {
   return numbers.map((number, index) => ({
@@ -298,7 +312,8 @@ function isComplete(id) {
 }
 
 function roomImage(room, direction = "a") {
-  return room.sourceOnly ? `assets/originals/IMG_${room.originals[0]}.jpg` : room.images[direction];
+  const originalFolder = room.originalFolder || "originals";
+  return room.sourceOnly ? `assets/${originalFolder}/IMG_${room.originals[0]}.jpg` : room.images[direction];
 }
 
 function optionFor(room, id) {
@@ -324,7 +339,7 @@ function updateProgress() {
   const complete = rooms.filter((room) => isComplete(room.id)).length;
   $("decision-count").textContent = decisions;
   $("rooms-shaped").textContent = complete;
-  $("progress-fill").style.width = `${(complete / rooms.length) * 100}%`;
+  $("progress-fill").style.width = `${(complete / collectionRoomTotal) * 100}%`;
 }
 
 function renderNav() {
@@ -438,8 +453,9 @@ function renderCollection() {
 }
 
 function originalItems(room) {
+  const originalFolder = room.originalFolder || "originals";
   return room.originals.map((number, index) => ({
-    src: `assets/originals/IMG_${number}.jpg`,
+    src: `assets/${originalFolder}/IMG_${number}.jpg`,
     label: `${room.name} · Existing condition`,
     meta: `Original ${String(index + 1).padStart(2, "0")} / ${String(room.originals.length).padStart(2, "0")}`
   }));
@@ -593,10 +609,11 @@ function render() {
   renderCompare(room);
   renderArchive(room);
   renderSourceStrip(room);
-  $("room-total").textContent = rooms.length;
+  $("room-total").textContent = collectionRoomTotal;
   $("source-room-notice").hidden = !room.sourceOnly;
   $("main-panel").classList.toggle("source-room", Boolean(room.sourceOnly));
-  $("room-position").textContent = `Bedroom ${String(roomIndex + 1).padStart(2, "0")} / ${String(rooms.length).padStart(2, "0")}`;
+  const roomNumber = room.number.match(/\d+/)?.[0] || String(roomIndex + 1);
+  $("room-position").textContent = `Room ${String(roomNumber).padStart(2, "0")} / ${String(collectionRoomTotal).padStart(2, "0")}`;
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
   $("rendering-jump").hidden = Boolean(room.sourceOnly);
