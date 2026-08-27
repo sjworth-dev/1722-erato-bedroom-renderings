@@ -244,12 +244,22 @@ const rooms = [
     id: "living-room", number: "Room 12", name: "Living Room",
     originals: ["7790", "7791", "7792", "7793", "7794", "7795", "7796", "7807", "7808", "7809", "7810", "7812", "7813", "7814", "7815", "7816", "7817", "7818", "7819", "7820", "7822", "7824", "7825"],
     originalFolder: "living-spaces",
+    featuredRendering: {
+      src: "assets/living-room-river-triptych.png",
+      label: "River Passage",
+      meta: "Living room art option · Monumental Louisiana river triptych"
+    },
     sourceOnly: true
   },
   {
     id: "dining-room", number: "Room 13", name: "Dining Room",
     originals: ["7797", "7798", "7799", "7811"],
     originalFolder: "living-spaces",
+    featuredRendering: {
+      src: "assets/dining-room-brass-rhythm.png",
+      label: "Brass Rhythm",
+      meta: "Dining room art option · Patinated relief constellation"
+    },
     sourceOnly: true
   }
 ];
@@ -318,6 +328,7 @@ function isComplete(id) {
 
 function roomImage(room, direction = "a") {
   if (!room.sourceOnly) return room.images[direction];
+  if (room.featuredRendering) return room.featuredRendering.src;
   const firstOriginal = room.originals[0];
   const number = typeof firstOriginal === "object" ? firstOriginal.number : firstOriginal;
   const folder = typeof firstOriginal === "object" ? firstOriginal.folder : (room.originalFolder || "originals");
@@ -388,7 +399,7 @@ function selectRoom(id) {
   activeRoom = id;
   activeDirection = roomState(id).direction;
   viewMode = "focus";
-  archiveView = rooms.find((room) => room.id === id).sourceOnly ? "originals" : "renderings";
+  archiveView = renderingItems(rooms.find((room) => room.id === id)).length ? "renderings" : "originals";
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -448,7 +459,12 @@ function renderCompare(room) {
 
 function renderCollection() {
   $("collection-tabs").innerHTML = Object.entries(directions).map(([id, option]) => `<button class="collection-tab ${id === collectionDirection ? "active" : ""}" data-collection-direction="${id}">${option.letter} · ${option.name}</button>`).join("");
-  $("collection-grid").innerHTML = rooms.map((room) => `<button class="collection-card" data-collection-room="${room.id}"><img src="${roomImage(room, collectionDirection)}" alt="${room.name}${room.sourceOnly ? " — original condition" : ` — ${optionFor(room, collectionDirection).name}`}"><span>${room.number} · ${room.name}${room.sourceOnly ? " · Source only" : ""}</span></button>`).join("");
+  $("collection-grid").innerHTML = rooms.map((room) => {
+    const hasRendering = renderingItems(room).length > 0;
+    const imageLabel = room.sourceOnly ? (hasRendering ? " — art option" : " — original condition") : ` — ${optionFor(room, collectionDirection).name}`;
+    const statusLabel = room.sourceOnly ? (hasRendering ? " · Art option ready" : " · Source only") : "";
+    return `<button class="collection-card" data-collection-room="${room.id}"><img src="${roomImage(room, collectionDirection)}" alt="${room.name}${imageLabel}"><span>${room.number} · ${room.name}${statusLabel}</span></button>`;
+  }).join("");
   $("collection-tabs").querySelectorAll("[data-collection-direction]").forEach((button) => button.addEventListener("click", () => {
     collectionDirection = button.dataset.collectionDirection;
     renderCollection();
@@ -473,8 +489,9 @@ function originalItems(room) {
 }
 
 function renderingItems(room) {
-  if (room.sourceOnly) return [];
   if (room.allRenderings) return room.allRenderings;
+  if (room.featuredRendering) return [room.featuredRendering];
+  if (room.sourceOnly) return [];
   return Object.keys(directions).map((id) => {
     const direction = optionFor(room, id);
     return {
@@ -503,12 +520,12 @@ function renderSourceStrip(room) {
 }
 
 function renderArchive(room) {
-  if (room.sourceOnly) archiveView = "originals";
   const renderings = renderingItems(room);
+  if (!renderings.length) archiveView = "originals";
   lightboxItems = archiveItems(room);
   $("original-count").textContent = room.originals.length;
   $("rendering-count").textContent = renderings.length;
-  $("rendering-tab").disabled = room.sourceOnly;
+  $("rendering-tab").disabled = !renderings.length;
   $("archive-tabs").querySelectorAll("[data-archive-view]").forEach((button) => button.classList.toggle("active", button.dataset.archiveView === archiveView));
   $("archive-grid").innerHTML = lightboxItems.map((item, index) => `
     <button class="archive-card" data-archive-index="${index}" type="button">
@@ -615,6 +632,8 @@ function render() {
   const roomIndex = rooms.indexOf(room);
   const choice = optionFor(room, activeDirection);
   const saved = roomState(room.id);
+  const renderings = renderingItems(room);
+  const hasRendering = renderings.length > 0;
   renderNav();
   renderTabs();
   renderCompare(room);
@@ -622,17 +641,18 @@ function render() {
   renderSourceStrip(room);
   $("room-total").textContent = collectionRoomTotal;
   $("source-room-notice").hidden = !room.sourceOnly;
+  $("source-room-notice").querySelector("span").textContent = hasRendering ? "Source room · First art option rendered" : "Source room · Renderings pending";
   $("main-panel").classList.toggle("source-room", Boolean(room.sourceOnly));
   const roomNumber = room.number.match(/\d+/)?.[0] || String(roomIndex + 1);
   $("room-position").textContent = `Room ${String(roomNumber).padStart(2, "0")} / ${String(collectionRoomTotal).padStart(2, "0")}`;
   $("room-kicker").textContent = room.number;
   $("room-title").textContent = room.name;
-  $("rendering-jump").hidden = Boolean(room.sourceOnly);
-  $("rendering-jump-count").textContent = renderingItems(room).length;
+  $("rendering-jump").hidden = !hasRendering;
+  $("rendering-jump-count").textContent = renderings.length;
   $("hero-image").src = roomImage(room, activeDirection);
-  $("hero-image").alt = room.sourceOnly ? `${room.name} — original condition` : `${room.name} bedroom — ${choice.name} art direction`;
-  $("image-option").textContent = room.sourceOnly ? "Original condition" : choice.name;
-  $("image-caption").textContent = room.sourceOnly ? "Awaiting first art-direction renderings" : choice.short;
+  $("hero-image").alt = room.sourceOnly ? (hasRendering ? `${room.name} — ${renderings[0].label} art option` : `${room.name} — original condition`) : `${room.name} bedroom — ${choice.name} art direction`;
+  $("image-option").textContent = room.sourceOnly ? (hasRendering ? renderings[0].label : "Original condition") : choice.name;
+  $("image-caption").textContent = room.sourceOnly ? (hasRendering ? renderings[0].meta : "Awaiting first art-direction renderings") : choice.short;
   $("direction-name").textContent = choice.name;
   $("palette").innerHTML = choice.palette.map((color) => `<span class="swatch" style="background:${color}" title="${color}"></span>`).join("");
   $("room-note").value = saved.note;
@@ -654,7 +674,11 @@ function render() {
 function summaryText() {
   return rooms.map((room) => {
     const saved = roomState(room.id);
-    if (room.sourceOnly) return `${room.number} — ${room.name}\nStatus: Source room added; art-direction renderings pending\nOriginal photographs: ${room.originals.length}`;
+    if (room.sourceOnly) {
+      const renderings = renderingItems(room);
+      const status = renderings.length ? `Art option ready: ${renderings[0].label}` : "Art-direction renderings pending";
+      return `${room.number} — ${room.name}\nStatus: ${status}\nOriginal photographs: ${room.originals.length}`;
+    }
     const picks = saved.shortlist.length ? saved.shortlist.map((id) => optionFor(room, id).name).join(", ") : "No option shortlisted";
     return `${room.number} — ${room.name}\nWorking view: ${optionFor(room, saved.direction).name}\nShortlist: ${picks}\nFrame: ${saved.frame}\nArt presence: ${saved.scale}\nNotes: ${saved.note || "—"}`;
   }).join("\n\n");
@@ -667,7 +691,11 @@ function escapeHTML(value) {
 function openDrawer() {
   $("decision-summary").innerHTML = rooms.map((room) => {
     const saved = roomState(room.id);
-    if (room.sourceOnly) return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>Source room</small></div><p><strong>Status:</strong> Art-direction renderings pending</p><p>${room.originals.length} original photograph${room.originals.length === 1 ? "" : "s"} added.</p></article>`;
+    if (room.sourceOnly) {
+      const renderings = renderingItems(room);
+      const status = renderings.length ? `Art option ready: ${renderings[0].label}` : "Art-direction renderings pending";
+      return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>Source room</small></div><p><strong>Status:</strong> ${status}</p><p>${room.originals.length} original photograph${room.originals.length === 1 ? "" : "s"} added.</p></article>`;
+    }
     const picks = saved.shortlist.length ? saved.shortlist.map((id) => optionFor(room, id).name).join(", ") : "No option shortlisted";
     return `<article class="summary-card"><div class="summary-card-heading"><h3>${room.name}</h3><small>${optionFor(room, saved.direction).name}</small></div><p><strong>Shortlist:</strong> ${picks}</p><p><strong>Frame:</strong> ${saved.frame} · <strong>Presence:</strong> ${saved.scale}</p><p class="${saved.note ? "" : "empty"}">${saved.note ? escapeHTML(saved.note) : "No refinement note yet."}</p></article>`;
   }).join("");
